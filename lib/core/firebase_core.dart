@@ -31,25 +31,6 @@ class FirebaseCore {
     FirebaseCoreSystem().setStatus(FirebaseCoreStatus.stable);
   }
 
-  Future<void> initializeFirebase() async {
-    if (WebService.isWeb) {
-      await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: 'AIzaSyD3Zr7yMGM4FUwZp_5KtbC35w-712DLPZg',
-          authDomain: 'flutter-fileease.firebaseapp.com',
-          projectId: 'flutter-fileease',
-          storageBucket: 'flutter-fileease.appspot.com',
-          messagingSenderId: '239466517804',
-          appId: '1:239466517804:web:a58d6d36cbca8e8fd04889',
-        ),
-      );
-    } else {
-      await Firebase.initializeApp(
-        name: 'flutter-fileease',
-      );
-    }
-  }
-
   Future<void> updateUserID() async {
     if (WebService.isWeb) {
       await FirebaseAuthService().createUserID();
