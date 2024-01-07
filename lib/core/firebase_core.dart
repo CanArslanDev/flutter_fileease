@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fileease/core/auth/auth_service.dart';
@@ -28,6 +29,25 @@ class FirebaseCore {
     // FirebaseAuthService().startListenUser();
 
     FirebaseCoreSystem().setStatus(FirebaseCoreStatus.stable);
+  }
+
+  Future<void> initializeFirebase() async {
+    if (WebService.isWeb) {
+      await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: 'AIzaSyD3Zr7yMGM4FUwZp_5KtbC35w-712DLPZg',
+          authDomain: 'flutter-fileease.firebaseapp.com',
+          projectId: 'flutter-fileease',
+          storageBucket: 'flutter-fileease.appspot.com',
+          messagingSenderId: '239466517804',
+          appId: '1:239466517804:web:a58d6d36cbca8e8fd04889',
+        ),
+      );
+    } else {
+      await Firebase.initializeApp(
+        name: 'flutter-fileease',
+      );
+    }
   }
 
   Future<void> updateUserID() async {
