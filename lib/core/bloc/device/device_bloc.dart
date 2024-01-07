@@ -1,9 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_fileease/core/bloc/device_info/device_info_model.dart';
-import 'package:flutter_fileease/core/bloc/device_info/profile_photo_cache_model.dart';
+import 'package:flutter_fileease/core/bloc/device/device_model.dart';
+import 'package:flutter_fileease/core/bloc/device/profile_photo_cache_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DeviceInfoBloc extends Cubit<DeviceInfoModel> {
-  DeviceInfoBloc() : super(DeviceInfoModel(cacheProfilePhotos: []));
+class DeviceBloc extends Cubit<DeviceModel> {
+  DeviceBloc() : super(DeviceModel(cacheProfilePhotos: []));
+
+  SharedPreferences? deviceStorage;
+
+  Future<void> initializeStorage() async {
+    deviceStorage ??= await SharedPreferences.getInstance();
+  }
 
   void addIfNotExistProfilePhotoToCacheProfilePhotos(
     ProfilePhotoCacheModel profilePhoto,
@@ -28,5 +35,9 @@ class DeviceInfoBloc extends Cubit<DeviceInfoModel> {
     final tempProfilePhotosList = state.cacheProfilePhotos;
     if (tempProfilePhotosList.contains(profilePhoto)) return true;
     return false;
+  }
+
+  SharedPreferences? get getStorage {
+    return deviceStorage;
   }
 }

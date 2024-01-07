@@ -10,7 +10,9 @@ import 'package:flutter_fileease/core/firebase_core.dart';
 import 'package:flutter_fileease/core/user/requests/connection_request_model.dart';
 import 'package:flutter_fileease/core/user/requests/previous_connection_request_model.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
+import 'package:flutter_fileease/core/web/web_firebase_core.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/web_service.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 
 class FirebaseCoreSystem {
@@ -104,6 +106,15 @@ class FirebaseCoreSystem {
   }
 
   Future<Map<String, String>> deviceDetailsAsMap() async {
+    if (WebService.isWeb) {
+      return {
+        'id': '',
+        'name': 'web',
+        'version': '',
+        'brand': '',
+        'model': '',
+      };
+    }
     final deviceInfoPlugin = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       final build = await deviceInfoPlugin.androidInfo;
@@ -138,7 +149,11 @@ class FirebaseCoreSystem {
   }
 
   Future<String> getDeviceToken() async {
-    return FlutterUdid.consistentUdid;
+    if (WebService.isWeb) {
+      return WebFirebaseCore().getToken();
+    } else {
+      return FlutterUdid.consistentUdid;
+    }
   }
 
   void setStatus(FirebaseCoreStatus status) {

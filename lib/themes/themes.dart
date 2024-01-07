@@ -5,6 +5,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class Themes {
   static final lightTextColor =
       GoogleFonts.inter(color: const Color(0xFF363635));
+  static final darkTextColor =
+      GoogleFonts.inter(color: const Color(0xFFFFFFFF));
   static final lightTheme = ThemeData.light().copyWith(
     colorScheme: ColorScheme.fromSwatch().copyWith(
       primaryContainer: const Color(0xFFF3F3F3),
@@ -115,7 +117,22 @@ class Themes {
     ),
     scaffoldBackgroundColor: const Color(0xFF1D1E21),
     primaryColor: const Color(0xFF1D1E21),
-    textTheme: GoogleFonts.interTextTheme(const TextTheme()),
+    textTheme: GoogleFonts.interTextTheme(
+      TextTheme(
+        labelMedium: darkTextColor,
+        labelLarge: darkTextColor,
+        labelSmall: darkTextColor,
+        displayMedium: darkTextColor,
+        displayLarge: darkTextColor,
+        displaySmall: darkTextColor,
+        titleMedium: darkTextColor,
+        titleLarge: darkTextColor,
+        titleSmall: darkTextColor,
+        bodyMedium: darkTextColor,
+        bodyLarge: darkTextColor,
+        bodySmall: darkTextColor,
+      ),
+    ),
     appBarTheme: AppBarTheme(
       color: const Color(0xFF1D1E21),
       elevation: 0,

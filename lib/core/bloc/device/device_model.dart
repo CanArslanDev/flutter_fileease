@@ -1,15 +1,15 @@
-import 'package:flutter_fileease/core/bloc/device_info/profile_photo_cache_model.dart';
+import 'package:flutter_fileease/core/bloc/device/profile_photo_cache_model.dart';
 
-class DeviceInfoModel {
-  DeviceInfoModel({
+class DeviceModel {
+  DeviceModel({
     required this.cacheProfilePhotos,
   });
   List<ProfilePhotoCacheModel> cacheProfilePhotos = [];
 
-  DeviceInfoModel copyWith({
+  DeviceModel copyWith({
     List<ProfilePhotoCacheModel>? cacheProfilePhotos,
   }) {
-    return DeviceInfoModel(
+    return DeviceModel(
       cacheProfilePhotos: cacheProfilePhotos ?? this.cacheProfilePhotos,
     );
   }

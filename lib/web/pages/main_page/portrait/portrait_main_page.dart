@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fileease/core/firebase_core.dart';
+import 'package:flutter_fileease/pages/home_page/home_page.dart';
+import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/themes/colors.dart';
 import 'package:flutter_fileease/ui/text_styles.dart';
-import 'package:flutter_fileease/web/pages/home_page/landscape/landscape_home_page_meet_widgets.dart';
+import 'package:flutter_fileease/web/pages/main_page/portrait/portrait_main_page_meet_widgets.dart';
 import 'package:flutter_fileease/web/widgets/animated_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WebLandscapeHomePage extends StatelessWidget {
-  const WebLandscapeHomePage({super.key});
-
+class WebPortraitMainPage extends StatelessWidget {
+  const WebPortraitMainPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,15 +84,15 @@ class WebLandscapeHomePage extends StatelessWidget {
   Widget get timeWidget {
     Widget timeCard() {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 1.w),
-        width: 46.w,
-        height: 46.w,
+        margin: EdgeInsets.symmetric(horizontal: 1.w, vertical: 2.w),
+        width: 95.w,
+        height: 57.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(35),
+          borderRadius: BorderRadius.circular(30),
           color: UIColors.darkGrey,
         ),
         child: Padding(
-          padding: EdgeInsets.all(3.w),
+          padding: EdgeInsets.all(6.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,19 +102,17 @@ class WebLandscapeHomePage extends StatelessWidget {
                 children: [
                   Text(
                     'Responding Time',
-                    style: TextStyles.boldText.copyWith(
-                      fontSize: 14.5.sp,
-                      color: UIColors.whiteColor,
-                    ),
+                    style: TextStyles.boldText
+                        .copyWith(fontSize: 19.sp, color: UIColors.whiteColor),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 4.w),
                     child: SizedBox(
-                      width: 44.w,
+                      width: 90.w,
                       child: Text(
                         '''Delete hidden launch agents, manage startup and login items to make your Mac run like new.''',
                         style: TextStyles.body.copyWith(
-                          fontSize: 17.sp,
+                          fontSize: 18.sp,
                           color: UIColors.whiteColor,
                           fontWeight: FontWeight.w600,
                         ),
@@ -130,17 +130,17 @@ class WebLandscapeHomePage extends StatelessWidget {
                     child: Text(
                       '1.5X',
                       style: TextStyles.boldText.copyWith(
-                        fontSize: 20.sp,
+                        fontSize: 23.sp,
                         color: const Color.fromARGB(255, 244, 0, 244),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 0.5.h),
+                    padding: EdgeInsets.only(top: 3.h),
                     child: Text(
                       'Faster boot time',
                       style: TextStyles.body.copyWith(
-                        fontSize: 14.5.sp,
+                        fontSize: 19.sp,
                         color: UIColors.whiteColor,
                       ),
                     ),
@@ -168,7 +168,7 @@ class WebLandscapeHomePage extends StatelessWidget {
                     child: Text(
                       'EaseEase File Transfer Speed',
                       style: TextStyles.body.copyWith(
-                        fontSize: 13.sp,
+                        fontSize: 16.sp,
                         color: UIColors.greyColor,
                       ),
                     ),
@@ -189,7 +189,7 @@ class WebLandscapeHomePage extends StatelessWidget {
                     child: Text(
                       'Other Apps File Transfer Speed',
                       style: TextStyles.body.copyWith(
-                        fontSize: 13.sp,
+                        fontSize: 16.sp,
                         color: UIColors.greyColor,
                       ),
                     ),
@@ -204,7 +204,7 @@ class WebLandscapeHomePage extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(top: 5.h),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           timeCard(),
@@ -241,94 +241,108 @@ class WebLandscapeHomePage extends StatelessWidget {
                     .copyWith(fontSize: 20.sp, color: UIColors.whiteColor),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 2.w, right: 2.w, top: 3.w),
+                padding: EdgeInsets.only(left: 1.w, right: 1.w, top: 3.w),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Column(
                           children: [
-                            WebLandscapeHomePageMeetWidgets(
-                              height: 31.6.h,
-                              width: 22.w,
-                              widgetIndex: 1,
+                            WebPortraitMainPageMeetWidgets(
+                              height: 43.h,
+                              width: 45.w,
+                              widgetIndex: 3,
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 2.w),
-                              child: WebLandscapeHomePageMeetWidgets(
-                                height: 31.6.h,
-                                width: 22.w,
-                                widgetIndex: 2,
+                              child: WebPortraitMainPageMeetWidgets(
+                                height: 17.h,
+                                width: 45.w,
+                                widgetIndex: 4,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 2.w),
+                              child: WebPortraitMainPageMeetWidgets(
+                                height: 17.h,
+                                width: 45.w,
+                                widgetIndex: 5,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 2.w),
+                              child: WebPortraitMainPageMeetWidgets(
+                                height: 42.w,
+                                width: 45.w,
+                                widgetIndex: 7,
                               ),
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 2.w),
-                          child: Column(
-                            children: [
-                              WebLandscapeHomePageMeetWidgets(
-                                height: 44.h,
-                                width: 22.w,
-                                widgetIndex: 3,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 2.w),
-                                child: WebLandscapeHomePageMeetWidgets(
-                                  height: 20.h,
-                                  width: 22.w,
-                                  widgetIndex: 4,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: 2.w),
+                        //   child: Column(
+                        //     children: [
+                        //       WebPortraitMainPageMeetWidgets(
+                        //         height: 31.6.h,
+                        //         width: 22.w,
+                        //         widgetIndex: 1,
+                        //       ),
+                        //       Padding(
+                        //         padding: EdgeInsets.only(top: 2.w),
+                        //         child: WebPortraitMainPageMeetWidgets(
+                        //           height: 31.6.h,
+                        //           width: 22.w,
+                        //           widgetIndex: 2,
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                     SizedBox(
-                      width: 2.w,
+                      width: 0.5.w,
                     ),
-                    Row(
-                      children: [
-                        Column(
-                          children: [
-                            WebLandscapeHomePageMeetWidgets(
-                              height: 20.h,
-                              width: 22.w,
-                              widgetIndex: 5,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2.w),
-                              child: WebLandscapeHomePageMeetWidgets(
-                                height: 44.h,
-                                width: 22.w,
-                                widgetIndex: 6,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 2.w),
-                          child: Column(
-                            children: [
-                              WebLandscapeHomePageMeetWidgets(
-                                height: 44.h,
-                                width: 22.w,
-                                widgetIndex: 7,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 2.w),
-                                child: WebLandscapeHomePageMeetWidgets(
-                                  height: 20.h,
-                                  width: 22.w,
-                                  widgetIndex: 8,
-                                ),
-                              ),
-                            ],
+                    Padding(
+                      padding: EdgeInsets.only(left: 2.w),
+                      child: Column(
+                        children: [
+                          WebPortraitMainPageMeetWidgets(
+                            height: 16.h,
+                            width: 45.w,
+                            widgetIndex: 1,
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(top: 2.w),
+                            child: WebPortraitMainPageMeetWidgets(
+                              height: 16.h,
+                              width: 45.w,
+                              widgetIndex: 2,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 2.w),
+                            child: WebPortraitMainPageMeetWidgets(
+                              height: 45.h,
+                              width: 45.w,
+                              widgetIndex: 6,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 2.w),
+                            child: WebPortraitMainPageMeetWidgets(
+                              height: 42.w,
+                              width: 45.w,
+                              widgetIndex: 8,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -344,10 +358,11 @@ class WebLandscapeHomePage extends StatelessWidget {
     Widget rowCheckText(String text) => Padding(
           padding: EdgeInsets.symmetric(horizontal: 1.w),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
                 'assets/icons/check_icon.svg',
-                height: 4.h,
+                height: 5.h,
                 colorFilter: const ColorFilter.mode(
                   UIColors.greenColor,
                   BlendMode.srcIn,
@@ -356,7 +371,7 @@ class WebLandscapeHomePage extends StatelessWidget {
               Text(
                 text,
                 style: TextStyles.greyText.copyWith(
-                  fontSize: 12.sp,
+                  fontSize: 15.sp,
                 ),
               ),
             ],
@@ -364,7 +379,7 @@ class WebLandscapeHomePage extends StatelessWidget {
         );
 
     return Padding(
-      padding: EdgeInsets.only(top: 3.2.w),
+      padding: EdgeInsets.only(top: 6.w),
       child: AnimatedAlignWidget(
         index: 3,
         child: Column(
@@ -377,7 +392,7 @@ class WebLandscapeHomePage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(16.w, 8.h),
+                      minimumSize: Size(28.w, 10.h),
                       backgroundColor: UIColors.darkBlue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -400,12 +415,12 @@ class WebLandscapeHomePage extends StatelessWidget {
                               Text(
                                 'GET IT ON',
                                 style: TextStyles.body
-                                    .copyWith(height: 1, fontSize: 12.sp),
+                                    .copyWith(height: 1, fontSize: 15.sp),
                               ),
                               Text(
                                 'Play Store',
                                 style: TextStyles.boldText
-                                    .copyWith(fontSize: 15.sp, height: 1),
+                                    .copyWith(fontSize: 19.sp, height: 1),
                               ),
                             ],
                           ),
@@ -415,11 +430,21 @@ class WebLandscapeHomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 2.w),
+                  padding: EdgeInsets.only(left: 5.w),
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await FirebaseCore().initialize();
+                      await Navigator.of(
+                        NavigationService.navigatorKey.currentContext!,
+                      ).pushAndRemoveUntil(
+                        MaterialPageRoute<Object>(
+                          builder: (context) => const HomePage(),
+                        ),
+                        (Route<dynamic> route) => false,
+                      );
+                    },
                     style: ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(Size(16.w, 8.h)),
+                      minimumSize: MaterialStatePropertyAll(Size(30.w, 10.h)),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -437,7 +462,7 @@ class WebLandscapeHomePage extends StatelessWidget {
                             UIColors.whiteColor,
                             BlendMode.srcIn,
                           ),
-                          height: 3.w,
+                          height: 9.w,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 1.w),
@@ -449,13 +474,13 @@ class WebLandscapeHomePage extends StatelessWidget {
                                 style: TextStyles.body.copyWith(
                                   height: 1,
                                   color: UIColors.whiteColor,
-                                  fontSize: 12.sp,
+                                  fontSize: 15.sp,
                                 ),
                               ),
                               Text(
                                 'Web',
                                 style: TextStyles.boldText.copyWith(
-                                  fontSize: 15.sp,
+                                  fontSize: 19.sp,
                                   height: 1,
                                   color: UIColors.whiteColor,
                                 ),
@@ -471,7 +496,7 @@ class WebLandscapeHomePage extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(top: 4.h),
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   rowCheckText('Full Optimized in All Platforms'),
@@ -486,30 +511,32 @@ class WebLandscapeHomePage extends StatelessWidget {
   }
 
   Widget get mainTitle => Padding(
-        padding: EdgeInsets.only(top: 5.w),
+        padding: EdgeInsets.only(top: 15.w),
         child: Center(
           child: AnimatedAlignWidget(
             index: 1,
             child: Text(
-              'FileEase File Transfer',
-              style: TextStyles.boldText.copyWith(color: UIColors.whiteColor),
+              'FileEase File\nTransfer',
+              textAlign: TextAlign.center,
+              style: TextStyles.boldText
+                  .copyWith(color: UIColors.whiteColor, fontSize: 26.sp),
             ),
           ),
         ),
       );
 
   Widget get mainDesc => Padding(
-        padding: EdgeInsets.only(top: 1.w),
+        padding: EdgeInsets.only(top: 7.w),
         child: Center(
           child: AnimatedAlignWidget(
             index: 2,
             child: SizedBox(
-              width: 60.w,
+              width: 90.w,
               child: Text(
                 '''FileEase is a multi-platform file transfer application designed to send files from any device as quickly as possible.''',
                 textAlign: TextAlign.center,
                 style: TextStyles.body
-                    .copyWith(color: UIColors.greyColor, fontSize: 15.sp),
+                    .copyWith(color: UIColors.greyColor, fontSize: 18.sp),
               ),
             ),
           ),
@@ -522,14 +549,14 @@ class WebLandscapeHomePage extends StatelessWidget {
         toolbarHeight: 8.2.h,
         leading: Padding(
           padding: EdgeInsets.only(
-            left: 15.w,
+            left: 5.w,
           ),
           child: SizedBox(
             child: Center(
               child: Text(
                 'FileEase',
                 style: TextStyles.boldText.copyWith(
-                  fontSize: 13.sp,
+                  fontSize: 19.sp,
                 ),
               ),
             ),
@@ -543,27 +570,15 @@ class WebLandscapeHomePage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(left: 2.w),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(10.w, 5.7.h),
-                backgroundColor: UIColors.darkBlue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              child: Text(
-                'Download',
-                style: TextStyles.body,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 2.w),
             child: OutlinedButton(
               onPressed: () {},
               style: ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(Size(10.w, 5.7.h)),
+                minimumSize: MaterialStatePropertyAll(Size(1.w, 5.7.h)),
+                padding: MaterialStateProperty.all(
+                  EdgeInsets.symmetric(
+                    horizontal: 3.w,
+                  ),
+                ),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -573,19 +588,15 @@ class WebLandscapeHomePage extends StatelessWidget {
                   const BorderSide(width: 0.5, color: Colors.white54),
                 ),
               ),
-              // style: OutlinedButton.styleFrom(
-              //     minimumSize: Size(10.w, 2.8.w),
-              //     shape: RoundedRectangleBorder(
-              //         side: BorderSide(width: 0.1, color: Colors.red),
-              //         borderRadius: BorderRadius.circular(20))),
               child: Text(
                 'Try in Web',
+                maxLines: 1,
                 style: TextStyles.body.copyWith(color: UIColors.whiteColor),
               ),
             ),
           ),
           SizedBox(
-            width: 13.w,
+            width: 4.w,
           ),
         ],
       );

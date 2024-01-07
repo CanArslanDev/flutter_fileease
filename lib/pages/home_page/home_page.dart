@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +19,7 @@ import 'package:flutter_fileease/pages/qr_pages/share_qr_page.dart';
 import 'package:flutter_fileease/pages/receive_requests_page.dart';
 import 'package:flutter_fileease/services/convert_value_service.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/responsive_sizer_service.dart';
 import 'package:flutter_fileease/themes/colors.dart';
 import 'package:flutter_fileease/ui/animated_text.dart';
 import 'package:flutter_fileease/ui/text_styles.dart';
@@ -131,7 +131,8 @@ class HomePage extends StatelessWidget {
             ),
             style: ElevatedButton.styleFrom(
               minimumSize: Size(48.w, 14.w),
-              maximumSize: Size(53.w, 50.w),
+              maximumSize:
+                  Size(ResponsiveSizerService.setWidthForOverflow(53.w), 50.w),
               backgroundColor: UIColors.mainPurple,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(

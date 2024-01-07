@@ -3,6 +3,7 @@ import 'package:flutter_fileease/core/base_core/core_system.dart';
 import 'package:flutter_fileease/core/firebase_core.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/storage_service.dart';
 
 class FirebaseAuthService {
   Future<bool> createUser() async {
@@ -59,7 +60,7 @@ class FirebaseAuthService {
   }
 
   Future<void> setUser(String userID) async {
-    await storage.write(key: 'userID', value: userID);
+    await StorageService().writeStringStorage('userID', userID);
 
     BlocProvider.of<UserBloc>(
       NavigationService.navigatorKey.currentContext!,

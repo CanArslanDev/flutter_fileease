@@ -12,11 +12,11 @@ import 'package:flutter_fileease/core/bloc/status_enum.dart';
 import 'package:flutter_fileease/core/user/requests/connected_user_model.dart';
 import 'package:flutter_fileease/core/user/requests/connection_request_model.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
+import 'package:flutter_fileease/core/web/web_firebase_core.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_fileease/services/storage_service.dart';
+import 'package:flutter_fileease/services/web_service.dart';
 import 'package:ntp/ntp.dart';
-
-const storage = FlutterSecureStorage();
 
 class FirebaseCore {
   final _firebase = FirebaseFirestore.instance;
@@ -25,39 +25,40 @@ class FirebaseCore {
     await FirebaseCoreNetwork().initialize();
     await updateUserID();
     await updateUser();
-    FirebaseAuthService().startListenUser();
+    // FirebaseAuthService().startListenUser();
 
     FirebaseCoreSystem().setStatus(FirebaseCoreStatus.stable);
   }
 
   Future<void> updateUserID() async {
-    if (Platform.isAndroid || Platform.isIOS) {
-      final storageUserID = await storage.read(key: 'userID');
-      if (storageUserID == null) {
-        await FirebaseAuthService().createUserID();
-      } else {
-        await FirebaseAuthService().createUserID(lastUserID: storageUserID);
-      }
+    if (WebService.isWeb) {
+      await FirebaseAuthService().createUserID();
     } else {
-      throw Exception('Platform not supported');
+      if (Platform.isAndroid || Platform.isIOS) {
+        final storageUserID =
+            await StorageService().readStringStorage('userID');
+        if (storageUserID == null) {
+          await FirebaseAuthService().createUserID();
+        } else {
+          await FirebaseAuthService().createUserID(lastUserID: storageUserID);
+        }
+      }
     }
   }
 
   Future<void> updateUser() async {
-    if (Platform.isAndroid || Platform.isIOS) {
-      await FirebaseAuthService().createUser();
-    } else {
-      throw Exception('Platform not supported');
-    }
+    await FirebaseAuthService().createUser();
   }
 
   Future<Timestamp> getServerTimestamp({int? reduceDays}) async {
+    var date = (WebService.isWeb)
+        ? await WebFirebaseCore().getServerTimestamp()
+        : await NTP.now();
     if (reduceDays != null) {
-      var date = await NTP.now();
       date = date.subtract(Duration(days: reduceDays));
       return Timestamp.fromDate(date);
     } else {
-      return Timestamp.fromDate(await NTP.now());
+      return Timestamp.fromDate(date);
     }
   }
 

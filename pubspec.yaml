@@ -56,6 +56,8 @@ dependencies:
   dotted_border: ^2.1.0
   qr_flutter: ^4.1.0
   share_plus: ^7.2.1
+  shared_preferences: ^2.2.2
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -4,8 +4,8 @@ import 'package:flutter_fileease/ui/text_styles.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WebPortraitHomePageMeetWidgets extends StatelessWidget {
-  const WebPortraitHomePageMeetWidgets({
+class WebPortraitMainPageMeetWidgets extends StatelessWidget {
+  const WebPortraitMainPageMeetWidgets({
     required this.widgetIndex,
     required this.height,
     required this.width,
