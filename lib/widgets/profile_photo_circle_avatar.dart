@@ -8,6 +8,7 @@ import 'package:flutter_fileease/core/bloc/firebase_core/profile_photo_file_mode
 import 'package:flutter_fileease/services/file_service.dart';
 import 'package:flutter_fileease/services/http_service.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/web_service.dart';
 
 class ProfilePhotoCircleAvatar extends StatelessWidget {
   const ProfilePhotoCircleAvatar({
@@ -72,6 +73,17 @@ class ProfilePhotoCircleAvatar extends StatelessWidget {
 
         return fileProfilePhoto.readAsBytesSync();
       }
+    }
+
+    if (WebService.isWeb) {
+      return CircleAvatar(
+        radius: radius,
+        backgroundImage: profilePhoto.downloadUrl != ''
+            ? NetworkImage(
+                'https://cors-anywhere.herokuapp.com/${profilePhoto.downloadUrl}',
+              )
+            : null,
+      );
     }
 
     if (profilePhoto.downloadUrl != '') {

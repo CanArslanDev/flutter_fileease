@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fileease/core/bloc/send_file/enums/download_status_enum.dart';
 import 'package:flutter_fileease/core/bloc/send_file/file_model.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_fileease/core/firebase_core.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
 import 'package:flutter_fileease/services/convert_value_service.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/web_service.dart';
 
 class CoreFirebaseStorage {
   final storageRef = FirebaseStorage.instance;
@@ -25,14 +27,29 @@ class CoreFirebaseStorage {
   String get getConnectionCollectionFirebaseDocumentName =>
       firebaseSendBloc.getConnectionCollectionFirebaseDocumentName();
 
-  void uploadFilesFromList(List<File> fileList) {
-    filesListRoot = BlocProvider.of<FirebaseSendFileBloc>(
-      NavigationService.navigatorKey.currentContext!,
-    ).getFilesList() as List<FirebaseFileModel>;
+  //Updated for web read errors
+  void uploadFilesFromPlatformFilesList(List<PlatformFile> platformFileList) {
+    var fileList = <File>[];
+    var fileSizeList = <int>[];
+    var fileByteList = <Uint8List>[];
+    var fileNameList = <String>[];
+    if (WebService.isWeb) {
+      fileList = platformFileList
+          .map((file) => File.fromRawPath(file.bytes!))
+          .toList();
+    } else {
+      fileList = platformFileList.map((file) => File(file.path!)).toList();
+    }
+    fileSizeList = platformFileList.map((file) => file.size).toList();
+    fileByteList = platformFileList.map((file) => file.bytes!).toList();
+    fileNameList = platformFileList.map((file) => file.name).toList();
     fileList.map((file) async {
       unawaited(
         convertAndSendFileModel(
           file,
+          fileNameList[fileList.indexOf(file)],
+          fileSizeList[fileList.indexOf(file)],
+          fileByteList[fileList.indexOf(file)],
           'files/',
         ),
       );
@@ -41,38 +58,42 @@ class CoreFirebaseStorage {
 
   Future<void> convertAndSendFileModel(
     File file,
+    String fileName,
+    int fileSize,
+    Uint8List fileBytes,
     String destination,
   ) async {
-    final fileName = file.path.split('/').last;
-    // final fileName =
-    //     await changeFileNameWithAddTimestamp(file.path.split('/').last);
-    final fileSize = ConvertValueService().getFileSize(file.path, 1);
+    final fileSizeVoid = ConvertValueService().getFileSize(fileSize, 1);
+    final timestamp = await FirebaseCore().getServerTimestamp();
     unawaited(
       BlocProvider.of<UserBloc>(
         NavigationService.navigatorKey.currentContext!,
-      ).decreaseUserCloudStorageAndSendFirebase(file.lengthSync() / 1024),
+      ).decreaseUserCloudStorageAndSendFirebase(fileSize / 1024),
     );
     final fileModel = FirebaseFileModel(
       name: fileName,
       bytesTransferred: '0',
-      totalBytes: file.lengthSync().toString(),
-      size: fileSize,
+      totalBytes: fileBytes.toString(),
+      size: fileSizeVoid,
       percentage: '0',
       url: '',
       downloadPath: '',
       downloadStatus: FirebaseFileModelDownloadStatus.notDownloaded,
-      path: file.path,
-      timestamp: await FirebaseCore().getServerTimestamp(),
+      path: (WebService.isWeb)
+          ? '$fileName-${timestamp.toDate()}'
+          : file.path, //file path null in flutter web
+      timestamp: timestamp,
     );
     filesListRoot.add(fileModel);
     uploadFile(
       file,
       'files/$getConnectionCollectionFirebaseDocumentName/sender/',
       fileName,
+      fileBytes: fileBytes,
       urlCallback: (url) {
         fileModel.url = url;
         changeFileInFilesListRoot(fileModel);
-        sendFirebaseFilesListRoot();
+        unawaited(sendFirebaseFilesListRoot());
       },
       listenUploadTaskCallback: (bytesTransferred, totalBytes) {
         fileModel
@@ -111,6 +132,7 @@ class CoreFirebaseStorage {
     File file,
     String destination,
     String? fileName, {
+    Uint8List? fileBytes,
     void Function(String bytesTransferred, String totalBytes)?
         listenUploadTaskCallback,
     void Function(String url)? urlCallback,
@@ -118,17 +140,14 @@ class CoreFirebaseStorage {
   }) {
     final fileNameChild =
         (fileName == null) ? file.path.split('/').last : fileName;
-    try {
-      final ref = storageRef.ref(destination).child(fileNameChild);
-      final uploadTask = ref.putFile(file);
-      listenUploadTask(uploadTask, (bytesTransferred, totalBytes) {
-        listenUploadTaskCallback?.call(bytesTransferred, totalBytes);
-        uploadSuccessCallback?.call();
-      });
-      getUrlWhenCompleteTask(uploadTask, urlCallback);
-    } catch (e) {
-      debugPrint('error occured $e');
-    }
+    final ref = storageRef.ref(destination).child(fileNameChild);
+    final uploadTask =
+        (WebService.isWeb) ? ref.putData(fileBytes!) : ref.putFile(file);
+    listenUploadTask(uploadTask, (bytesTransferred, totalBytes) {
+      listenUploadTaskCallback?.call(bytesTransferred, totalBytes);
+      uploadSuccessCallback?.call();
+    });
+    getUrlWhenCompleteTask(uploadTask, urlCallback);
   }
 
   void listenUploadTask(

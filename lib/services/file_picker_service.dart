@@ -4,15 +4,12 @@ import 'dart:math';
 import 'package:file_picker/file_picker.dart';
 
 class FilePickerService {
-  Future<List<File>> pickFiles() async {
+  Future<List<PlatformFile>> pickFiles() async {
     final result = await FilePicker.platform.pickFiles(allowMultiple: true);
-
     if (result != null) {
-      return result.paths.map((path) => File(path!)).toList();
-    } else {
-      return [];
-      // User canceled the picker
+      return result.files;
     }
+    return [];
   }
 
   String getFileSize(String filepath, int decimalsByte) {

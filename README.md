@@ -6,6 +6,7 @@
  - qr code sayfası açıldığında yukarıdan (inappnotificationsdan) connection request snackbarı gelmeyecek
  - Connection requester 5 dakikadan sonra kabul edilemeyecek, ve kullanıcı uygulamayı kapadıysa da kabul edilemeyecek
 Timestamp kullanılarak yapılacak, ve timestamp kullanıldığında connectionrequestlerde aynı kişiden fazla request geldiğinde silinme işlemini timestampe göre yaparak birden fazla aynı anda requested silinmesininde önüne geçilmiş olacak
+ - çok biriktiğinde last connections request gibi verilerin aktarımı uzun sürebiliyor, eğer kullanıcı o an bağlantıda ise bağlantı hızını etkileyebilir, bunun önüne geçmek için bağlantıdayken kodu durduran bir sistem yapılabilir. 
  - constants.dart dosyası oluşturulup içine cloud storage files klasörü veya profilePhotos gibi yerler girilecek
  - uygulama min sdk 20 olacak (build.gradle),
  - info.plist [buradakiler](https://pub.dev/packages/qr_code_scanner) eklenecek

@@ -171,7 +171,7 @@ class ConnectionPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             final fileList = await FilePickerService().pickFiles();
-            CoreFirebaseStorage().uploadFilesFromList(fileList);
+            CoreFirebaseStorage().uploadFilesFromPlatformFilesList(fileList);
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(

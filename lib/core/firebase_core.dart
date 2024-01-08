@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fileease/core/auth/auth_service.dart';
@@ -26,24 +23,16 @@ class FirebaseCore {
     await FirebaseCoreNetwork().initialize();
     await updateUserID();
     await updateUser();
-    // FirebaseAuthService().startListenUser();
-
+    FirebaseAuthService().startListenUser();
     FirebaseCoreSystem().setStatus(FirebaseCoreStatus.stable);
   }
 
   Future<void> updateUserID() async {
-    if (WebService.isWeb) {
+    final storageUserID = await StorageService().readStringStorage('userID');
+    if (storageUserID == null) {
       await FirebaseAuthService().createUserID();
     } else {
-      if (Platform.isAndroid || Platform.isIOS) {
-        final storageUserID =
-            await StorageService().readStringStorage('userID');
-        if (storageUserID == null) {
-          await FirebaseAuthService().createUserID();
-        } else {
-          await FirebaseAuthService().createUserID(lastUserID: storageUserID);
-        }
-      }
+      await FirebaseAuthService().createUserID(lastUserID: storageUserID);
     }
   }
 
@@ -85,6 +74,9 @@ class FirebaseCore {
     final docSnapshotuser = await collectionuser.get();
     final doc = docSnapshotuser.data();
     final deviceToken = await FirebaseCoreSystem().getDeviceToken();
+    final userBloc = BlocProvider.of<UserBloc>(
+      NavigationService.navigatorKey.currentContext!,
+    );
     final firebaseDefaultStorageKB = BlocProvider.of<FirebaseCoreBloc>(
       NavigationService.navigatorKey.currentContext!,
     ).getDefaultStorageKB;
@@ -110,14 +102,20 @@ class FirebaseCore {
           'username': '',
         },
       });
+      if (doc['connectionID'] != userBloc.getDeviceID()) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(deviceToken)
+            .update({
+          'connectionID': userBloc.getDeviceID(),
+        });
+      }
       doc['connectedUser'] = {
         'userID': '',
         'token': '',
         'username': '',
       };
-      BlocProvider.of<UserBloc>(
-        NavigationService.navigatorKey.currentContext!,
-      ).setModel(
+      userBloc.setModel(
         doc,
       );
     } catch (e) {

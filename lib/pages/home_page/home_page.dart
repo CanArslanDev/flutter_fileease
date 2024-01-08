@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textFieldController = TextEditingController();
     final key = GlobalKey<ScaffoldState>();
     final sendFileWidget = ValueNotifier<int>(0);
     return Scaffold(
@@ -80,6 +81,7 @@ class HomePage extends StatelessWidget {
                         },
                         sendFileWidget,
                         sendState,
+                        textFieldController,
                       ),
                       shareWidget,
                       shareFriendsWidget(userState),
@@ -288,9 +290,8 @@ class HomePage extends StatelessWidget {
     void Function(int) changeWidgetStatus,
     ValueListenable<int> sendFileWidget,
     FirebaseSendFileModel sendState,
+    TextEditingController textFieldController,
   ) {
-    final textFieldController = TextEditingController();
-
     Widget buttons() {
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,

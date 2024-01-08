@@ -26,6 +26,7 @@ class FirebaseFileModel {
   Timestamp timestamp;
 
   Map<String, dynamic> toMap() {
+    // print('timestamp $timestamp');
     return {
       'name': name,
       'bytesTransferred': bytesTransferred,

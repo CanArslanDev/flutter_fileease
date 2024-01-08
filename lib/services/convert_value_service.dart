@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 class ConvertValueService {
@@ -11,9 +10,8 @@ class ConvertValueService {
     }
   }
 
-  String getFileSize(String filepath, int decimalsByte) {
-    final file = File(filepath);
-    final bytes = file.lengthSync();
+  String getFileSize(int fileByte, int decimalsByte) {
+    final bytes = fileByte;
     if (bytes <= 0) return '0 B';
     const suffixes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     final i = (log(bytes) / log(1024)).floor();
