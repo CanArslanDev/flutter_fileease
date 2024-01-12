@@ -110,6 +110,16 @@ class FirebaseSendFileUtils {
     List<FirebaseFileModel> newFilesList,
     List<FirebaseFileModel> oldFilesList,
   ) {
+    print('new filesfiles');
+    for (final file in newFilesList) {
+      print(file.name);
+      print(file.path);
+    }
+    print('old files');
+    for (final file in oldFilesList) {
+      print(file.name);
+      print(file.path);
+    }
     final returnFilesList = newFilesList;
     for (final file in returnFilesList) {
       final newFile = file;
@@ -121,6 +131,8 @@ class FirebaseSendFileUtils {
             item.timestamp == file.timestamp,
       );
       if (index != -1) {
+        print('r111 run');
+
         newFile.downloadStatus = oldFilesList[index].downloadStatus;
         returnFilesList[index] = newFile;
       }

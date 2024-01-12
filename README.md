@@ -11,6 +11,7 @@ Timestamp kullanılarak yapılacak, ve timestamp kullanıldığında connectionr
  - uygulama min sdk 20 olacak (build.gradle),
  - info.plist [buradakiler](https://pub.dev/packages/qr_code_scanner) eklenecek
  - uygulama sadece portrait modda açılacak
+ - theme modda kullanılan SchedulerBinding.instance.platformDispatcher.platformBrightness sadece uygulama açıldığında yenilendiğinden dolayı kullanıcı uygulamayı arka plana alıp telefon temasını değiştirdiğinde tema yenilenmiyor, o düzeltilecek
 
 ## connection conditionları (kalanlar opsiyonel ileride yapılabilir)
  - ~~Herhangi bir taraf bağlantıdan çıkarsa~~

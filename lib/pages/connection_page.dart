@@ -23,6 +23,7 @@ class ConnectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coreFirebaseStorage = CoreFirebaseStorage();
     final progressBarValue = ValueNotifier<double>(70);
     final pageFilesList = <FileWidget>[];
     return Scaffold(
@@ -48,7 +49,8 @@ class ConnectionPage extends StatelessWidget {
                   progressBarValue,
                   state.receiverProfilePhoto!,
                 ),
-                if (ifEqualSenderIDAndUserID(state.senderID)) selectFileWidget,
+                if (ifEqualSenderIDAndUserID(state.senderID))
+                  selectFileWidget(coreFirebaseStorage),
                 spacesWidget(state),
                 fileDetails(pageFilesList.reversed.toList()),
               ],
@@ -134,7 +136,7 @@ class ConnectionPage extends StatelessWidget {
         NavigationService.navigatorKey.currentContext!,
       ).getDeviceID();
 
-  Widget get selectFileWidget {
+  Widget selectFileWidget(CoreFirebaseStorage coreStorage) {
     const borderRadius = 17.0;
     return Padding(
       padding: EdgeInsets.only(top: 6.w, right: 11.w, left: 11.w),
@@ -171,7 +173,7 @@ class ConnectionPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             final fileList = await FilePickerService().pickFiles();
-            CoreFirebaseStorage().uploadFilesFromPlatformFilesList(fileList);
+            coreStorage.uploadFilesFromPlatformFilesList(fileList);
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(

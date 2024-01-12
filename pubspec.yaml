@@ -58,6 +58,7 @@ dependencies:
   share_plus: ^7.2.1
   shared_preferences: ^2.2.2
   http: ^1.1.2
+  transparent_image: ^2.0.1
 
 dev_dependencies:
   flutter_test:

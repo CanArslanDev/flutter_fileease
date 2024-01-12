@@ -41,7 +41,13 @@ class CoreFirebaseStorage {
       fileList = platformFileList.map((file) => File(file.path!)).toList();
     }
     fileSizeList = platformFileList.map((file) => file.size).toList();
-    fileByteList = platformFileList.map((file) => file.bytes!).toList();
+    if (WebService.isWeb) {
+      fileByteList = platformFileList.map((file) => file.bytes!).toList();
+    } else {
+      for (final file in fileList) {
+        fileByteList.add(file.readAsBytesSync());
+      }
+    }
     fileNameList = platformFileList.map((file) => file.name).toList();
     fileList.map((file) async {
       unawaited(
@@ -84,6 +90,10 @@ class CoreFirebaseStorage {
           : file.path, //file path null in flutter web
       timestamp: timestamp,
     );
+    print('FİLE');
+    print('- file name : $fileName');
+    print('- file path : $fileName-${timestamp.toDate()}');
+    print('- file timestamp : ${timestamp.toDate()}');
     filesListRoot.add(fileModel);
     uploadFile(
       file,
