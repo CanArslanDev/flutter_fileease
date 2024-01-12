@@ -90,10 +90,6 @@ class CoreFirebaseStorage {
           : file.path, //file path null in flutter web
       timestamp: timestamp,
     );
-    print('FİLE');
-    print('- file name : $fileName');
-    print('- file path : $fileName-${timestamp.toDate()}');
-    print('- file timestamp : ${timestamp.toDate()}');
     filesListRoot.add(fileModel);
     uploadFile(
       file,
