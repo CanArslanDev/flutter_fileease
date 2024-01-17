@@ -14,8 +14,7 @@ import 'package:flutter_fileease/pages/home_page/home_page.dart';
 import 'package:flutter_fileease/pages/qr_pages/qr_scanner_page.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/services/web_service.dart';
-import 'package:flutter_fileease/web/pages/main_page/landscape/landscape_main_page.dart';
-import 'package:flutter_fileease/web/pages/main_page/portrait/portrait_main_page.dart';
+import 'package:flutter_fileease/web/pages/main_page/main_page.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() async {
@@ -95,11 +94,7 @@ class MyApp extends StatelessWidget {
 
   Widget get initalizeHome {
     if (WebService.isWeb) {
-      if (WebService.isMobileMode) {
-        return const WebPortraitMainPage();
-      } else {
-        return const WebLandscapeMainPage();
-      }
+      return const WebMainPage();
     }
     Timer(Duration.zero, () {
       unawaited(FirebaseCore().initialize());

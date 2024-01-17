@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fileease/core/firebase_core.dart';
 import 'package:flutter_fileease/pages/home_page/home_page.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/web_service.dart';
 import 'package:flutter_fileease/themes/colors.dart';
 import 'package:flutter_fileease/ui/text_styles.dart';
-import 'package:flutter_fileease/web/pages/main_page/portrait/portrait_main_page_meet_widgets.dart';
+import 'package:flutter_fileease/web/pages/main_page/main_page_meet_widgets.dart';
 import 'package:flutter_fileease/web/widgets/animated_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WebPortraitMainPage extends StatelessWidget {
-  const WebPortraitMainPage({super.key});
+class WebMainPage extends StatelessWidget {
+  const WebMainPage({super.key});
   @override
   Widget build(BuildContext context) {
+    final isMobile = WebService.isMobileMode;
     return Scaffold(
       backgroundColor: UIColors.webBackgroundColor,
-      appBar: appBar,
+      appBar: appBar(isMobile: isMobile),
       body: ListView(
         children: [
           Stack(
@@ -64,11 +66,11 @@ class WebPortraitMainPage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  mainTitle,
-                  mainDesc,
-                  mainButtons,
-                  meetWidget,
-                  timeWidget,
+                  mainTitle(isMobile: true),
+                  mainDesc(isMobile: true),
+                  mainButtons(isMobile: true),
+                  meetWidget(isMobile: true),
+                  timeWidget(isMobile: true),
                   SizedBox(
                     height: 30.h,
                   ),
@@ -81,18 +83,19 @@ class WebPortraitMainPage extends StatelessWidget {
     );
   }
 
-  Widget get timeWidget {
+  Widget timeWidget({bool isMobile = false}) {
     Widget timeCard() {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 1.w, vertical: 2.w),
-        width: 95.w,
-        height: 57.h,
+        margin:
+            EdgeInsets.symmetric(horizontal: 1.w, vertical: isMobile ? 2.w : 0),
+        width: isMobile ? 95.w : 46.w,
+        height: isMobile ? 106.w : 57.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(isMobile ? 30 : 35),
           color: UIColors.darkGrey,
         ),
         child: Padding(
-          padding: EdgeInsets.all(6.w),
+          padding: EdgeInsets.all(isMobile ? 6.w : 3.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,19 +105,21 @@ class WebPortraitMainPage extends StatelessWidget {
                 children: [
                   Text(
                     'Responding Time',
-                    style: TextStyles.boldText
-                        .copyWith(fontSize: 19.sp, color: UIColors.whiteColor),
+                    style: TextStyles.boldText.copyWith(
+                      fontSize: isMobile ? 19.sp : 14.5.sp,
+                      color: UIColors.whiteColor,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 4.w),
                     child: SizedBox(
-                      width: 90.w,
+                      width: isMobile ? 90.w : 44.w,
                       child: Text(
                         '''Delete hidden launch agents, manage startup and login items to make your Mac run like new.''',
                         style: TextStyles.body
                             .copyWith(color: UIColors.whiteColor)
                             .copyWith(
-                              fontSize: 18.sp,
+                              fontSize: isMobile ? 18.sp : 17.sp,
                               color: UIColors.whiteColor,
                               fontWeight: FontWeight.w600,
                             ),
@@ -132,7 +137,7 @@ class WebPortraitMainPage extends StatelessWidget {
                     child: Text(
                       '1.5X',
                       style: TextStyles.boldText.copyWith(
-                        fontSize: 23.sp,
+                        fontSize: isMobile ? 23.sp : 20.sp,
                         color: const Color.fromARGB(255, 244, 0, 244),
                       ),
                     ),
@@ -144,7 +149,7 @@ class WebPortraitMainPage extends StatelessWidget {
                       style: TextStyles.body
                           .copyWith(color: UIColors.whiteColor)
                           .copyWith(
-                            fontSize: 19.sp,
+                            fontSize: isMobile ? 19.sp : 14.5.sp,
                             color: UIColors.whiteColor,
                           ),
                     ),
@@ -170,11 +175,11 @@ class WebPortraitMainPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 1.h),
                     child: Text(
-                      'EaseEase File Transfer Speed',
+                      'FileEase File Transfer Speed',
                       style: TextStyles.body
                           .copyWith(color: UIColors.whiteColor)
                           .copyWith(
-                            fontSize: 16.sp,
+                            fontSize: isMobile ? 16.sp : 13.sp,
                             color: UIColors.greyColor,
                           ),
                     ),
@@ -197,7 +202,7 @@ class WebPortraitMainPage extends StatelessWidget {
                       style: TextStyles.body
                           .copyWith(color: UIColors.whiteColor)
                           .copyWith(
-                            fontSize: 16.sp,
+                            fontSize: isMobile ? 16.sp : 13.sp,
                             color: UIColors.greyColor,
                           ),
                     ),
@@ -222,7 +227,7 @@ class WebPortraitMainPage extends StatelessWidget {
     );
   }
 
-  Widget get meetWidget {
+  Widget meetWidget({bool isMobile = false}) {
     return Padding(
       padding: EdgeInsets.only(top: 20.h),
       child: AnimatedAlignWidget(
@@ -249,90 +254,13 @@ class WebPortraitMainPage extends StatelessWidget {
                     .copyWith(fontSize: 20.sp, color: UIColors.whiteColor),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 1.w, right: 1.w, top: 3.w),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Column(
-                          children: [
-                            WebPortraitMainPageMeetWidgets(
-                              height: 43.h,
-                              width: 45.w,
-                              widgetIndex: 3,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2.w),
-                              child: WebPortraitMainPageMeetWidgets(
-                                height: 17.h,
-                                width: 45.w,
-                                widgetIndex: 4,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2.w),
-                              child: WebPortraitMainPageMeetWidgets(
-                                height: 17.h,
-                                width: 45.w,
-                                widgetIndex: 5,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2.w),
-                              child: WebPortraitMainPageMeetWidgets(
-                                height: 22.h,
-                                width: 45.w,
-                                widgetIndex: 7,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 0.5.w,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 2.w),
-                      child: Column(
-                        children: [
-                          WebPortraitMainPageMeetWidgets(
-                            height: 16.h,
-                            width: 45.w,
-                            widgetIndex: 1,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 2.w),
-                            child: WebPortraitMainPageMeetWidgets(
-                              height: 16.h,
-                              width: 45.w,
-                              widgetIndex: 2,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 2.w),
-                            child: WebPortraitMainPageMeetWidgets(
-                              height: 45.h,
-                              width: 45.w,
-                              widgetIndex: 6,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 2.w),
-                            child: WebPortraitMainPageMeetWidgets(
-                              height: 22.h,
-                              width: 45.w,
-                              widgetIndex: 8,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                padding: EdgeInsets.only(
+                  left: isMobile ? 1.w : 2.w,
+                  right: isMobile ? 1.w : 2.w,
+                  top: 3.w,
+                ),
+                child: WebMainPageMeetWidgets.getMeetWidgets(
+                  isMobile: isMobile,
                 ),
               ),
             ],
@@ -342,7 +270,7 @@ class WebPortraitMainPage extends StatelessWidget {
     );
   }
 
-  Widget get mainButtons {
+  Widget mainButtons({bool isMobile = false}) {
     Widget rowCheckText(String text) => Padding(
           padding: EdgeInsets.symmetric(horizontal: 1.w),
           child: Row(
@@ -350,7 +278,7 @@ class WebPortraitMainPage extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 'assets/icons/check_icon.svg',
-                height: 5.h,
+                height: isMobile ? 5.h : 4.h,
                 colorFilter: const ColorFilter.mode(
                   UIColors.greenColor,
                   BlendMode.srcIn,
@@ -359,7 +287,7 @@ class WebPortraitMainPage extends StatelessWidget {
               Text(
                 text,
                 style: TextStyles.greyText.copyWith(
-                  fontSize: 15.sp,
+                  fontSize: isMobile ? 15.sp : 12.sp,
                 ),
               ),
             ],
@@ -367,7 +295,7 @@ class WebPortraitMainPage extends StatelessWidget {
         );
 
     return Padding(
-      padding: EdgeInsets.only(top: 6.w),
+      padding: EdgeInsets.only(top: isMobile ? 6.w : 3.2.w),
       child: AnimatedAlignWidget(
         index: 3,
         child: Column(
@@ -380,7 +308,8 @@ class WebPortraitMainPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(28.w, 10.h),
+                      minimumSize:
+                          isMobile ? Size(28.w, 10.h) : Size(16.w, 8.h),
                       backgroundColor: UIColors.darkBlue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -404,7 +333,10 @@ class WebPortraitMainPage extends StatelessWidget {
                                 'GET IT ON',
                                 style: TextStyles.body
                                     .copyWith(color: UIColors.whiteColor)
-                                    .copyWith(height: 1, fontSize: 15.sp),
+                                    .copyWith(
+                                      height: 1,
+                                      fontSize: isMobile ? 15.sp : 12.sp,
+                                    ),
                               ),
                               Text(
                                 'Play Store',
@@ -422,7 +354,7 @@ class WebPortraitMainPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 5.w),
+                  padding: EdgeInsets.only(left: isMobile ? 5.w : 2.w),
                   child: OutlinedButton(
                     onPressed: () async {
                       await FirebaseCore().initialize();
@@ -436,7 +368,9 @@ class WebPortraitMainPage extends StatelessWidget {
                       );
                     },
                     style: ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(Size(30.w, 10.h)),
+                      minimumSize: MaterialStatePropertyAll(
+                        isMobile ? Size(30.w, 10.h) : Size(16.w, 8.h),
+                      ),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -454,7 +388,7 @@ class WebPortraitMainPage extends StatelessWidget {
                             UIColors.whiteColor,
                             BlendMode.srcIn,
                           ),
-                          height: 9.w,
+                          height: isMobile ? 9.w : 3.w,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 1.w),
@@ -468,13 +402,13 @@ class WebPortraitMainPage extends StatelessWidget {
                                     .copyWith(
                                       height: 1,
                                       color: UIColors.whiteColor,
-                                      fontSize: 15.sp,
+                                      fontSize: isMobile ? 15.sp : 12.sp,
                                     ),
                               ),
                               Text(
                                 'Web',
                                 style: TextStyles.boldText.copyWith(
-                                  fontSize: 19.sp,
+                                  fontSize: isMobile ? 19.sp : 15.sp,
                                   height: 1,
                                   color: UIColors.whiteColor,
                                 ),
@@ -504,7 +438,7 @@ class WebPortraitMainPage extends StatelessWidget {
     );
   }
 
-  Widget get mainTitle => Padding(
+  Widget mainTitle({bool isMobile = false}) => Padding(
         padding: EdgeInsets.only(top: 15.w),
         child: Center(
           child: AnimatedAlignWidget(
@@ -512,46 +446,51 @@ class WebPortraitMainPage extends StatelessWidget {
             child: Text(
               'FileEase File\nTransfer',
               textAlign: TextAlign.center,
-              style: TextStyles.boldText
-                  .copyWith(color: UIColors.whiteColor, fontSize: 26.sp),
-            ),
-          ),
-        ),
-      );
-
-  Widget get mainDesc => Padding(
-        padding: EdgeInsets.only(top: 7.w),
-        child: Center(
-          child: AnimatedAlignWidget(
-            index: 2,
-            child: SizedBox(
-              width: 90.w,
-              child: Text(
-                '''FileEase is a multi-platform file transfer application designed to send files from any device as quickly as possible.''',
-                textAlign: TextAlign.center,
-                style: TextStyles.body
-                    .copyWith(color: UIColors.whiteColor)
-                    .copyWith(color: UIColors.greyColor, fontSize: 18.sp),
+              style: TextStyles.boldText.copyWith(
+                color: UIColors.whiteColor,
+                fontSize: isMobile ? 26.sp : null,
               ),
             ),
           ),
         ),
       );
 
-  AppBar get appBar => AppBar(
+  Widget mainDesc({bool isMobile = false}) => Padding(
+        padding: EdgeInsets.only(top: isMobile ? 7.w : 1.w),
+        child: Center(
+          child: AnimatedAlignWidget(
+            index: 2,
+            child: SizedBox(
+              width: isMobile ? 90.w : 60.w,
+              child: Text(
+                '''FileEase is a multi-platform file transfer application designed to send files from any device as quickly as possible.''',
+                textAlign: TextAlign.center,
+                style: TextStyles.body
+                    .copyWith(color: UIColors.whiteColor)
+                    .copyWith(
+                      color: UIColors.greyColor,
+                      fontSize: isMobile ? 18.sp : 15.sp,
+                    ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+  AppBar appBar({bool isMobile = false}) => AppBar(
         backgroundColor: UIColors.webBackgroundColor,
         elevation: 0,
         toolbarHeight: 8.2.h,
         leading: Padding(
           padding: EdgeInsets.only(
-            left: 5.w,
+            left: isMobile ? 5.w : 15.w,
           ),
           child: SizedBox(
             child: Center(
               child: Text(
                 'FileEase',
                 style: TextStyles.boldText.copyWith(
-                  fontSize: 19.sp,
+                  fontSize: isMobile ? 19.sp : 13.sp,
                   color: UIColors.whiteColor,
                 ),
               ),
@@ -569,12 +508,16 @@ class WebPortraitMainPage extends StatelessWidget {
             child: OutlinedButton(
               onPressed: () {},
               style: ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(Size(1.w, 5.7.h)),
-                padding: MaterialStateProperty.all(
-                  EdgeInsets.symmetric(
-                    horizontal: 3.w,
-                  ),
+                minimumSize: MaterialStatePropertyAll(
+                  isMobile ? Size(1.w, 5.7.h) : Size(10.w, 5.7.h),
                 ),
+                padding: isMobile
+                    ? MaterialStateProperty.all(
+                        EdgeInsets.symmetric(
+                          horizontal: 3.w,
+                        ),
+                      )
+                    : null,
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -594,7 +537,7 @@ class WebPortraitMainPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 4.w,
+            width: isMobile ? 4.w : 13.w,
           ),
         ],
       );

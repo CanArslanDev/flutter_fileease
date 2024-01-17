@@ -4,8 +4,8 @@ import 'package:flutter_fileease/ui/text_styles.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WebPortraitMainPageMeetWidgets extends StatelessWidget {
-  const WebPortraitMainPageMeetWidgets({
+class WebMainPageMeetWidgets extends StatelessWidget {
+  const WebMainPageMeetWidgets({
     required this.widgetIndex,
     required this.height,
     required this.width,
@@ -33,6 +33,190 @@ class WebPortraitMainPageMeetWidgets extends StatelessWidget {
     } else {
       return widget8(height, width);
     }
+  }
+
+  static Widget getMeetWidgets({bool isMobile = false}) {
+    Widget portrait() {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Column(
+                children: [
+                  WebMainPageMeetWidgets(
+                    height: 43.h,
+                    width: 45.w,
+                    widgetIndex: 3,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2.w),
+                    child: WebMainPageMeetWidgets(
+                      height: 17.h,
+                      width: 45.w,
+                      widgetIndex: 4,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2.w),
+                    child: WebMainPageMeetWidgets(
+                      height: 17.h,
+                      width: 45.w,
+                      widgetIndex: 5,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2.w),
+                    child: WebMainPageMeetWidgets(
+                      height: 22.h,
+                      width: 45.w,
+                      widgetIndex: 7,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            width: 0.5.w,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 2.w),
+            child: Column(
+              children: [
+                WebMainPageMeetWidgets(
+                  height: 16.h,
+                  width: 45.w,
+                  widgetIndex: 1,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 2.w),
+                  child: WebMainPageMeetWidgets(
+                    height: 16.h,
+                    width: 45.w,
+                    widgetIndex: 2,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 2.w),
+                  child: WebMainPageMeetWidgets(
+                    height: 45.h,
+                    width: 45.w,
+                    widgetIndex: 6,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 2.w),
+                  child: WebMainPageMeetWidgets(
+                    height: 22.h,
+                    width: 45.w,
+                    widgetIndex: 8,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget landscape() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Column(
+                children: [
+                  WebMainPageMeetWidgets(
+                    height: 31.6.h,
+                    width: 22.w,
+                    widgetIndex: 1,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2.w),
+                    child: WebMainPageMeetWidgets(
+                      height: 31.6.h,
+                      width: 22.w,
+                      widgetIndex: 2,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 2.w),
+                child: Column(
+                  children: [
+                    WebMainPageMeetWidgets(
+                      height: 44.h,
+                      width: 22.w,
+                      widgetIndex: 3,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.w),
+                      child: WebMainPageMeetWidgets(
+                        height: 20.h,
+                        width: 22.w,
+                        widgetIndex: 4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            width: 2.w,
+          ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  WebMainPageMeetWidgets(
+                    height: 20.h,
+                    width: 22.w,
+                    widgetIndex: 5,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2.w),
+                    child: WebMainPageMeetWidgets(
+                      height: 44.h,
+                      width: 22.w,
+                      widgetIndex: 6,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 2.w),
+                child: Column(
+                  children: [
+                    WebMainPageMeetWidgets(
+                      height: 44.h,
+                      width: 22.w,
+                      widgetIndex: 7,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.w),
+                      child: WebMainPageMeetWidgets(
+                        height: 20.h,
+                        width: 22.w,
+                        widgetIndex: 8,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    }
+
+    return isMobile ? portrait() : landscape();
   }
 
   Widget widget1(double height, double width) {
