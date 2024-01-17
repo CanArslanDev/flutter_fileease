@@ -111,11 +111,13 @@ class WebPortraitMainPage extends StatelessWidget {
                       width: 90.w,
                       child: Text(
                         '''Delete hidden launch agents, manage startup and login items to make your Mac run like new.''',
-                        style: TextStyles.body.copyWith(
-                          fontSize: 18.sp,
-                          color: UIColors.whiteColor,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: TextStyles.body
+                            .copyWith(color: UIColors.whiteColor)
+                            .copyWith(
+                              fontSize: 18.sp,
+                              color: UIColors.whiteColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                     ),
                   ),
@@ -139,10 +141,12 @@ class WebPortraitMainPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 3.h),
                     child: Text(
                       'Faster boot time',
-                      style: TextStyles.body.copyWith(
-                        fontSize: 19.sp,
-                        color: UIColors.whiteColor,
-                      ),
+                      style: TextStyles.body
+                          .copyWith(color: UIColors.whiteColor)
+                          .copyWith(
+                            fontSize: 19.sp,
+                            color: UIColors.whiteColor,
+                          ),
                     ),
                   ),
                   Padding(
@@ -167,10 +171,12 @@ class WebPortraitMainPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 1.h),
                     child: Text(
                       'EaseEase File Transfer Speed',
-                      style: TextStyles.body.copyWith(
-                        fontSize: 16.sp,
-                        color: UIColors.greyColor,
-                      ),
+                      style: TextStyles.body
+                          .copyWith(color: UIColors.whiteColor)
+                          .copyWith(
+                            fontSize: 16.sp,
+                            color: UIColors.greyColor,
+                          ),
                     ),
                   ),
                   Padding(
@@ -188,10 +194,12 @@ class WebPortraitMainPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 1.h),
                     child: Text(
                       'Other Apps File Transfer Speed',
-                      style: TextStyles.body.copyWith(
-                        fontSize: 16.sp,
-                        color: UIColors.greyColor,
-                      ),
+                      style: TextStyles.body
+                          .copyWith(color: UIColors.whiteColor)
+                          .copyWith(
+                            fontSize: 16.sp,
+                            color: UIColors.greyColor,
+                          ),
                     ),
                   ),
                 ],
@@ -276,33 +284,13 @@ class WebPortraitMainPage extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: 2.w),
                               child: WebPortraitMainPageMeetWidgets(
-                                height: 42.w,
+                                height: 22.h,
                                 width: 45.w,
                                 widgetIndex: 7,
                               ),
                             ),
                           ],
                         ),
-                        // Padding(
-                        //   padding: EdgeInsets.only(left: 2.w),
-                        //   child: Column(
-                        //     children: [
-                        //       WebPortraitMainPageMeetWidgets(
-                        //         height: 31.6.h,
-                        //         width: 22.w,
-                        //         widgetIndex: 1,
-                        //       ),
-                        //       Padding(
-                        //         padding: EdgeInsets.only(top: 2.w),
-                        //         child: WebPortraitMainPageMeetWidgets(
-                        //           height: 31.6.h,
-                        //           width: 22.w,
-                        //           widgetIndex: 2,
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
                       ],
                     ),
                     SizedBox(
@@ -336,7 +324,7 @@ class WebPortraitMainPage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(top: 2.w),
                             child: WebPortraitMainPageMeetWidgets(
-                              height: 42.w,
+                              height: 22.h,
                               width: 45.w,
                               widgetIndex: 8,
                             ),
@@ -415,12 +403,16 @@ class WebPortraitMainPage extends StatelessWidget {
                               Text(
                                 'GET IT ON',
                                 style: TextStyles.body
+                                    .copyWith(color: UIColors.whiteColor)
                                     .copyWith(height: 1, fontSize: 15.sp),
                               ),
                               Text(
                                 'Play Store',
-                                style: TextStyles.boldText
-                                    .copyWith(fontSize: 19.sp, height: 1),
+                                style: TextStyles.boldText.copyWith(
+                                  fontSize: 19.sp,
+                                  height: 1,
+                                  color: UIColors.whiteColor,
+                                ),
                               ),
                             ],
                           ),
@@ -471,11 +463,13 @@ class WebPortraitMainPage extends StatelessWidget {
                             children: [
                               Text(
                                 'Try on',
-                                style: TextStyles.body.copyWith(
-                                  height: 1,
-                                  color: UIColors.whiteColor,
-                                  fontSize: 15.sp,
-                                ),
+                                style: TextStyles.body
+                                    .copyWith(color: UIColors.whiteColor)
+                                    .copyWith(
+                                      height: 1,
+                                      color: UIColors.whiteColor,
+                                      fontSize: 15.sp,
+                                    ),
                               ),
                               Text(
                                 'Web',
@@ -536,6 +530,7 @@ class WebPortraitMainPage extends StatelessWidget {
                 '''FileEase is a multi-platform file transfer application designed to send files from any device as quickly as possible.''',
                 textAlign: TextAlign.center,
                 style: TextStyles.body
+                    .copyWith(color: UIColors.whiteColor)
                     .copyWith(color: UIColors.greyColor, fontSize: 18.sp),
               ),
             ),
@@ -557,6 +552,7 @@ class WebPortraitMainPage extends StatelessWidget {
                 'FileEase',
                 style: TextStyles.boldText.copyWith(
                   fontSize: 19.sp,
+                  color: UIColors.whiteColor,
                 ),
               ),
             ),
@@ -566,7 +562,7 @@ class WebPortraitMainPage extends StatelessWidget {
         actions: [
           Text(
             'Home',
-            style: TextStyles.body,
+            style: TextStyles.body.copyWith(color: UIColors.whiteColor),
           ),
           Padding(
             padding: EdgeInsets.only(left: 2.w),
@@ -591,7 +587,9 @@ class WebPortraitMainPage extends StatelessWidget {
               child: Text(
                 'Try in Web',
                 maxLines: 1,
-                style: TextStyles.body.copyWith(color: UIColors.whiteColor),
+                style: TextStyles.body
+                    .copyWith(color: UIColors.whiteColor)
+                    .copyWith(color: UIColors.whiteColor),
               ),
             ),
           ),

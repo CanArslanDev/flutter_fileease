@@ -20,7 +20,8 @@ class Themes {
       ),
     ),
     drawerTheme: const DrawerThemeData(
-      backgroundColor: Color(0xFFF2FBFF),
+      backgroundColor: Color(0xFFFFFFFF),
+      surfaceTintColor: Color(0xFFFFFFFF),
     ),
     scaffoldBackgroundColor: const Color(0xFFF2FBFF),
     primaryColor: const Color(0xFFF2FBFF),

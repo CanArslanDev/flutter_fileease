@@ -9,7 +9,6 @@ import 'package:flutter_fileease/services/file_service.dart';
 import 'package:flutter_fileease/services/http_service.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/services/web_service.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class ProfilePhotoCircleAvatar extends StatelessWidget {
   const ProfilePhotoCircleAvatar({
@@ -78,43 +77,12 @@ class ProfilePhotoCircleAvatar extends StatelessWidget {
 
     if (WebService.isWeb) {
       return profilePhoto.downloadUrl != ''
-          ? FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image:
-                  'https://cors-anywhere.herokuapp.com/${profilePhoto.downloadUrl}',
-              width: radius * 2,
-              fit: BoxFit.cover,
+          ? CircleAvatar(
+              backgroundImage: NetworkImage(profilePhoto.downloadUrl),
             )
           : SizedBox(
               width: radius * 2,
             );
-      // return profilePhoto.downloadUrl != ''
-      //     ? ClipRRect(
-      //         borderRadius: BorderRadius.circular(1000),
-      //         child: Image.network(
-      //           'https://cors-anywhere.herokuapp.com/${profilePhoto.downloadUrl}', //For web cors because image.network images not working on web
-      //           width: radius * 2,
-      //           loadingBuilder: (context, child, loadingProgress) {
-      //             final isLoading = ValueNotifier(true);
-      //             if (loadingProgress != null) {
-      //               isLoading.value = false;
-      //             }
-
-      //             return ValueListenableBuilder(
-      //                 valueListenable: isLoading,
-      //                 builder: (context, bool value, child) {
-      //                   return AnimatedOpacity(
-      //                     opacity: value ? 0 : 1,
-      //                     duration: const Duration(seconds: 2),
-      //                     child: child,
-      //                   );
-      //                 });
-      //           },
-      //         ),
-      //       )
-      //     : SizedBox(
-      //         width: radius * 2,
-      //       );
     }
 
     if (profilePhoto.downloadUrl != '') {

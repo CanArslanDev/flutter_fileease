@@ -114,11 +114,13 @@ class WebLandscapeMainPage extends StatelessWidget {
                       width: 44.w,
                       child: Text(
                         '''Delete hidden launch agents, manage startup and login items to make your Mac run like new.''',
-                        style: TextStyles.body.copyWith(
-                          fontSize: 17.sp,
-                          color: UIColors.whiteColor,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: TextStyles.body
+                            .copyWith(color: UIColors.whiteColor)
+                            .copyWith(
+                              fontSize: 17.sp,
+                              color: UIColors.whiteColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                     ),
                   ),
@@ -142,10 +144,12 @@ class WebLandscapeMainPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 0.5.h),
                     child: Text(
                       'Faster boot time',
-                      style: TextStyles.body.copyWith(
-                        fontSize: 14.5.sp,
-                        color: UIColors.whiteColor,
-                      ),
+                      style: TextStyles.body
+                          .copyWith(color: UIColors.whiteColor)
+                          .copyWith(
+                            fontSize: 14.5.sp,
+                            color: UIColors.whiteColor,
+                          ),
                     ),
                   ),
                   Padding(
@@ -170,10 +174,12 @@ class WebLandscapeMainPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 1.h),
                     child: Text(
                       'EaseEase File Transfer Speed',
-                      style: TextStyles.body.copyWith(
-                        fontSize: 13.sp,
-                        color: UIColors.greyColor,
-                      ),
+                      style: TextStyles.body
+                          .copyWith(color: UIColors.whiteColor)
+                          .copyWith(
+                            fontSize: 13.sp,
+                            color: UIColors.greyColor,
+                          ),
                     ),
                   ),
                   Padding(
@@ -191,10 +197,12 @@ class WebLandscapeMainPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 1.h),
                     child: Text(
                       'Other Apps File Transfer Speed',
-                      style: TextStyles.body.copyWith(
-                        fontSize: 13.sp,
-                        color: UIColors.greyColor,
-                      ),
+                      style: TextStyles.body
+                          .copyWith(color: UIColors.whiteColor)
+                          .copyWith(
+                            fontSize: 13.sp,
+                            color: UIColors.greyColor,
+                          ),
                     ),
                   ),
                 ],
@@ -403,12 +411,16 @@ class WebLandscapeMainPage extends StatelessWidget {
                               Text(
                                 'GET IT ON',
                                 style: TextStyles.body
+                                    .copyWith(color: UIColors.whiteColor)
                                     .copyWith(height: 1, fontSize: 12.sp),
                               ),
                               Text(
                                 'Play Store',
-                                style: TextStyles.boldText
-                                    .copyWith(fontSize: 15.sp, height: 1),
+                                style: TextStyles.boldText.copyWith(
+                                  fontSize: 19.sp,
+                                  height: 1,
+                                  color: UIColors.whiteColor,
+                                ),
                               ),
                             ],
                           ),
@@ -451,11 +463,13 @@ class WebLandscapeMainPage extends StatelessWidget {
                             children: [
                               Text(
                                 'Try on',
-                                style: TextStyles.body.copyWith(
-                                  height: 1,
-                                  color: UIColors.whiteColor,
-                                  fontSize: 12.sp,
-                                ),
+                                style: TextStyles.body
+                                    .copyWith(color: UIColors.whiteColor)
+                                    .copyWith(
+                                      height: 1,
+                                      color: UIColors.whiteColor,
+                                      fontSize: 12.sp,
+                                    ),
                               ),
                               Text(
                                 'Web',
@@ -514,6 +528,7 @@ class WebLandscapeMainPage extends StatelessWidget {
                 '''FileEase is a multi-platform file transfer application designed to send files from any device as quickly as possible.''',
                 textAlign: TextAlign.center,
                 style: TextStyles.body
+                    .copyWith(color: UIColors.whiteColor)
                     .copyWith(color: UIColors.greyColor, fontSize: 15.sp),
               ),
             ),
@@ -535,6 +550,7 @@ class WebLandscapeMainPage extends StatelessWidget {
                 'FileEase',
                 style: TextStyles.boldText.copyWith(
                   fontSize: 13.sp,
+                  color: UIColors.whiteColor,
                 ),
               ),
             ),
@@ -544,7 +560,7 @@ class WebLandscapeMainPage extends StatelessWidget {
         actions: [
           Text(
             'Home',
-            style: TextStyles.body,
+            style: TextStyles.body.copyWith(color: UIColors.whiteColor),
           ),
           Padding(
             padding: EdgeInsets.only(left: 2.w),
@@ -559,7 +575,7 @@ class WebLandscapeMainPage extends StatelessWidget {
               ),
               child: Text(
                 'Download',
-                style: TextStyles.body,
+                style: TextStyles.body.copyWith(color: UIColors.whiteColor),
               ),
             ),
           ),
@@ -585,7 +601,9 @@ class WebLandscapeMainPage extends StatelessWidget {
               //         borderRadius: BorderRadius.circular(20))),
               child: Text(
                 'Try in Web',
-                style: TextStyles.body.copyWith(color: UIColors.whiteColor),
+                style: TextStyles.body
+                    .copyWith(color: UIColors.whiteColor)
+                    .copyWith(color: UIColors.whiteColor),
               ),
             ),
           ),

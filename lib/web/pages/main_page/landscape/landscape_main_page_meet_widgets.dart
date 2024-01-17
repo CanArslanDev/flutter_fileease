@@ -67,6 +67,7 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
             child: Text(
               'Fully Compatible',
               style: TextStyles.body
+                  .copyWith(color: UIColors.whiteColor)
                   .copyWith(fontSize: 15.sp, color: UIColors.whiteColor),
             ),
           ),
@@ -94,6 +95,7 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
           Text(
             'Countries',
             style: TextStyles.body
+                .copyWith(color: UIColors.whiteColor)
                 .copyWith(fontSize: 16.sp, color: UIColors.whiteColor),
           ),
         ],
@@ -161,6 +163,7 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
           Text(
             'Daily File Sharing',
             style: TextStyles.body
+                .copyWith(color: UIColors.whiteColor)
                 .copyWith(fontSize: 16.sp, color: const Color(0xFFffa16e)),
           ),
         ],
@@ -187,6 +190,7 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
           Text(
             'Daily Usage',
             style: TextStyles.body
+                .copyWith(color: UIColors.whiteColor)
                 .copyWith(fontSize: 16.sp, color: const Color(0xFF6793e9)),
           ),
         ],
@@ -217,10 +221,12 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
                 ),
                 Text(
                   'Media Recommended',
-                  style: TextStyles.body.copyWith(
-                    fontSize: 15.sp,
-                    color: const Color(0xFF6793e9),
-                  ),
+                  style: TextStyles.body
+                      .copyWith(color: UIColors.whiteColor)
+                      .copyWith(
+                        fontSize: 15.sp,
+                        color: const Color(0xFF6793e9),
+                      ),
                 ),
               ],
             ),
@@ -231,11 +237,13 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
                 children: [
                   Text(
                     'Cult Of',
-                    style: TextStyles.body.copyWith(
-                      fontSize: 19.sp,
-                      color: Colors.grey,
-                      height: 1,
-                    ),
+                    style: TextStyles.body
+                        .copyWith(color: UIColors.whiteColor)
+                        .copyWith(
+                          fontSize: 19.sp,
+                          color: Colors.grey,
+                          height: 1,
+                        ),
                   ),
                   Text(
                     'File Sharing',
@@ -279,11 +287,13 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
               ),
               Text(
                 '/5',
-                style: TextStyles.body.copyWith(
-                  height: 1,
-                  fontSize: 15.sp,
-                  color: UIColors.whiteColor,
-                ),
+                style: TextStyles.body
+                    .copyWith(color: UIColors.whiteColor)
+                    .copyWith(
+                      height: 1,
+                      fontSize: 15.sp,
+                      color: UIColors.whiteColor,
+                    ),
               ),
             ],
           ),
@@ -292,6 +302,7 @@ class WebLandscapeMainPageMeetWidgets extends StatelessWidget {
             child: Text(
               '100+ REVIEWS',
               style: TextStyles.body
+                  .copyWith(color: UIColors.whiteColor)
                   .copyWith(fontSize: 14.sp, color: UIColors.whiteColor),
             ),
           ),

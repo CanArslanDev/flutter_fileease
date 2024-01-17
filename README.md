@@ -32,6 +32,13 @@ Timestamp kullanılarak yapılacak, ve timestamp kullanıldığında connectionr
  - userblocta ki setUserConnectionsLists listesi içinde ki değerler sürekli emit olarak güncelleniyor, bu değerler sadece receive page de gözüktüğü için receive page açıldığında emit olarak güncellenecek şekilde değiştirilebilir, yapılabiliyorsa navigation servicede ki ckey ile yapılırsa çok daha sağlıklı olur
  - connection requestler için shimmer eklenebilir,  loading verisi geliyor modelden
  - bir kullanıcı connectiondan çıktığında diğer kullanıcı alert dialog olarak diğer kullanıcının çıktığı bilgisi verilebilir
+ -  (item) =>
+          item.path == file.path &&
+          item.name == file.name &&
+          item.fileCreatedTimestamp == file.fileCreatedTimestamp,
+
+          bunun gibi item karşılaştırmalarını bir yere alalım, birden çok yazınca clean code olmuyor
+
 
 ## Yapılanlar
 

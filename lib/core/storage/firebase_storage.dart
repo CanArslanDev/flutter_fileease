@@ -32,6 +32,7 @@ class CoreFirebaseStorage {
     var fileList = <File>[];
     var fileSizeList = <int>[];
     var fileByteList = <Uint8List>[];
+    final fileTotalByteList = <int>[];
     var fileNameList = <String>[];
     if (WebService.isWeb) {
       fileList = platformFileList
@@ -46,6 +47,7 @@ class CoreFirebaseStorage {
     } else {
       for (final file in fileList) {
         fileByteList.add(file.readAsBytesSync());
+        fileTotalByteList.add(file.lengthSync());
       }
     }
     fileNameList = platformFileList.map((file) => file.name).toList();
@@ -57,6 +59,7 @@ class CoreFirebaseStorage {
           fileSizeList[fileList.indexOf(file)],
           fileByteList[fileList.indexOf(file)],
           'files/',
+          fileTotalBytes: fileTotalByteList[fileList.indexOf(file)],
         ),
       );
     }).toList();
@@ -67,8 +70,9 @@ class CoreFirebaseStorage {
     String fileName,
     int fileSize,
     Uint8List fileBytes,
-    String destination,
-  ) async {
+    String destination, {
+    int? fileTotalBytes,
+  }) async {
     final fileSizeVoid = ConvertValueService().getFileSize(fileSize, 1);
     final timestamp = await FirebaseCore().getServerTimestamp();
     unawaited(
@@ -79,7 +83,9 @@ class CoreFirebaseStorage {
     final fileModel = FirebaseFileModel(
       name: fileName,
       bytesTransferred: '0',
-      totalBytes: fileBytes.toString(),
+      totalBytes: (fileTotalBytes != null)
+          ? fileTotalBytes.toString()
+          : fileBytes.toString(),
       size: fileSizeVoid,
       percentage: '0',
       url: '',

@@ -20,6 +20,7 @@ import 'package:flutter_fileease/core/user/requests/connection_request_model.dar
 import 'package:flutter_fileease/core/user/user_bloc.dart';
 import 'package:flutter_fileease/services/http_service.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
+import 'package:flutter_fileease/services/web_service.dart';
 
 class FirebaseSendFileBloc extends Cubit<FirebaseSendFileModel> {
   FirebaseSendFileBloc()
@@ -120,7 +121,7 @@ class FirebaseSendFileBloc extends Cubit<FirebaseSendFileModel> {
       (item) =>
           item.path == file.path &&
           item.name == file.name &&
-          item.fileCreatedTimestamp == file.fileCreatedTimestamp,
+          file.fileCreatedTimestamp == item.fileCreatedTimestamp,
     );
     state.downloadFilesList[index] = file;
   }
@@ -139,11 +140,16 @@ class FirebaseSendFileBloc extends Cubit<FirebaseSendFileModel> {
       FirebaseFileModelDownloadStatus.downloading,
       downloadPathLocation,
     );
-    await HttpService().downloadFile(
-      fileUrl,
-      fileName,
-      downloadPath: (downloadPath) => downloadPathLocation = downloadPath,
-    );
+    if (WebService.isWeb) {
+      HttpService().downloadFileForWeb(fileUrl, fileName);
+      downloadPathLocation = 'web';
+    } else {
+      await HttpService().downloadFile(
+        fileUrl,
+        fileName,
+        downloadPath: (downloadPath) => downloadPathLocation = downloadPath,
+      );
+    }
     downloadStatus.call(
       FirebaseFileModelDownloadStatus.downloaded,
       downloadPathLocation,
@@ -353,6 +359,10 @@ class FirebaseSendFileBloc extends Cubit<FirebaseSendFileModel> {
 
   void setStatus(FirebaseSendFileRequestEnum status) {
     emit(state.copyWith(status: status));
+  }
+
+  int getDownloadFilesListLength() {
+    return state.downloadFilesList.length;
   }
 
   FirebaseSendFileModel getModel() {

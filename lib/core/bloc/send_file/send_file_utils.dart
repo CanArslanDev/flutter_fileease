@@ -22,12 +22,14 @@ class FirebaseSendFileUtils {
     var changedValue = false;
     for (final file in downloadFilesList) {
       final index = filesList.indexWhere(
-        (item) =>
-            item.path == file.path &&
-            item.name == file.name &&
-            file.fileCreatedTimestamp == item.timestamp,
+        (item) => item.path == file.path &&
+                item.name == file.name &&
+                (file.downloadPath == 'web')
+            ? file.fileCreatedTimestamp.seconds == item.timestamp.seconds
+            : file.fileCreatedTimestamp == item.timestamp,
       );
-      if (filesList[index].downloadStatus != file.downloadStatus) {
+      if (index != -1 &&
+          filesList[index].downloadStatus != file.downloadStatus) {
         final changedFile = filesList[index]
           ..downloadStatus = file.downloadStatus
           ..downloadPath = file.downloadPath;
