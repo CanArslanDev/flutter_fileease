@@ -1,5 +1,7 @@
 
 ## Yapılacaklar
+ - prefer_constructors_over_static_methods linter üzerinden kaldırdığında hata veren yerlerin void türlerini factory olarak değiştirmeyi dene
+ - Logger paketine bakılacak, eğer uygulamada kullanılabilirse debugPrint ile ilgili loan kodlar logger paketi ile değiştirilecek.
  - kullanıcı dosya transferindeyken connectiondan çıkamıyor
  - Kullanıcının telefonda ve veri tabanında depolama alanı yeri olup olmadığı kontrol edilip dosyalar öyle eklenebilecek (transfer esnasında)
  - dosya transferinden çıktıktan sonra userda ki lastConnectionsda temizleniyor mu kontrol edilecek (değişmemesi lazım)
