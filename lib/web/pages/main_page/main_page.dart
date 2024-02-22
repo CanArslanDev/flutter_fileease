@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fileease/core/firebase_core.dart';
-import 'package:flutter_fileease/pages/portrait/home_page/home_page.dart';
+import 'package:flutter_fileease/pages/portrait/home_page/home_page.dart'
+    as PortraitHomePage;
+import 'package:flutter_fileease/pages/landscape/home_page/home_page.dart'
+    as LandscapeHomePage;
 import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/services/web_service.dart';
 import 'package:flutter_fileease/themes/colors.dart';
@@ -360,15 +363,7 @@ class WebMainPage extends StatelessWidget {
                   padding: EdgeInsets.only(left: isMobile ? 5.ww : 2.ww),
                   child: OutlinedButton(
                     onPressed: () async {
-                      await FirebaseCore().initialize();
-                      await Navigator.of(
-                        NavigationService.navigatorKey.currentContext!,
-                      ).pushAndRemoveUntil(
-                        MaterialPageRoute<Object>(
-                          builder: (context) => const HomePage(),
-                        ),
-                        (Route<dynamic> route) => false,
-                      );
+                      await goHomePage(isMobile: isMobile);
                     },
                     style: ButtonStyle(
                       minimumSize: MaterialStatePropertyAll(
@@ -509,7 +504,9 @@ class WebMainPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 2.ww),
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await goHomePage(isMobile: isMobile);
+              },
               style: ButtonStyle(
                 minimumSize: MaterialStatePropertyAll(
                   isMobile ? Size(1.ww, 5.7.wh) : Size(10.ww, 5.7.wh),
@@ -544,4 +541,18 @@ class WebMainPage extends StatelessWidget {
           ),
         ],
       );
+
+  Future<void> goHomePage({bool isMobile = false}) async {
+    await FirebaseCore().initialize();
+    await Navigator.of(
+      NavigationService.navigatorKey.currentContext!,
+    ).pushAndRemoveUntil(
+      MaterialPageRoute<Object>(
+        builder: (context) => isMobile
+            ? const PortraitHomePage.HomePage()
+            : const LandscapeHomePage.HomePage(),
+      ),
+      (Route<dynamic> route) => false,
+    );
+  }
 }

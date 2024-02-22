@@ -47,7 +47,8 @@ class HomePage extends StatelessWidget {
       body: Multi3BlocBuilder<UserBloc, UserModel, FirebaseCoreBloc,
           FirebaseCoreModel, FirebaseSendFileBloc, FirebaseSendFileModel>(
         builder: (coreContext, userState, coreState, sendState) {
-          return Stack(
+          return ListView();
+          /* return Stack(
             children: [
               SizedBox(
                 height: 100.h,
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
                 child: scanToConnectWidget,
               ),
             ],
-          );
+          );*/
         },
       ),
     );
@@ -838,12 +839,13 @@ class HomePage extends StatelessWidget {
   }
 
   AppBar appBar(void Function() openDrawer) => AppBar(
-        title: const Text('Home'),
+        title:
+            Text('Home', style: TextStyles.boldText.copyWith(fontSize: 13.sp)),
         leading: IconButton(
-          icon: Icon(
+          icon: const Expanded(
+              child: Icon(
             Icons.menu,
-            size: 7.w,
-          ),
+          )),
           onPressed: () {
             openDrawer.call();
           },
