@@ -9,9 +9,9 @@ import 'package:flutter_fileease/core/bloc/firebase_core/firebase_core_bloc.dart
 import 'package:flutter_fileease/core/bloc/send_file/send_file_bloc.dart';
 import 'package:flutter_fileease/core/firebase_core.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
-import 'package:flutter_fileease/pages/connection_page.dart';
-import 'package:flutter_fileease/pages/home_page/home_page.dart';
-import 'package:flutter_fileease/pages/qr_pages/qr_scanner_page.dart';
+import 'package:flutter_fileease/pages/portrait/connection_page.dart';
+import 'package:flutter_fileease/pages/portrait/home_page/home_page.dart';
+import 'package:flutter_fileease/pages/portrait/qr_pages/qr_scanner_page.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/services/web_service.dart';
 import 'package:flutter_fileease/web/pages/main_page/main_page.dart';

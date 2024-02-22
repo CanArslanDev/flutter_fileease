@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fileease/themes/colors.dart';
 import 'package:flutter_fileease/ui/text_styles.dart';
+import 'package:flutter_fileease/web/responsive/web_responsive_sizer.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class WebMainPageMeetWidgets extends StatelessWidget {
   const WebMainPageMeetWidgets({
@@ -48,31 +48,31 @@ class WebMainPageMeetWidgets extends StatelessWidget {
               Column(
                 children: [
                   WebMainPageMeetWidgets(
-                    height: 43.h,
-                    width: 45.w,
+                    height: 43.wh,
+                    width: 45.ww,
                     widgetIndex: 3,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 2.w),
+                    padding: EdgeInsets.only(top: 2.ww),
                     child: WebMainPageMeetWidgets(
-                      height: 17.h,
-                      width: 45.w,
+                      height: 17.wh,
+                      width: 45.ww,
                       widgetIndex: 4,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 2.w),
+                    padding: EdgeInsets.only(top: 2.ww),
                     child: WebMainPageMeetWidgets(
-                      height: 17.h,
-                      width: 45.w,
+                      height: 17.wh,
+                      width: 45.ww,
                       widgetIndex: 5,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 2.w),
+                    padding: EdgeInsets.only(top: 2.ww),
                     child: WebMainPageMeetWidgets(
-                      height: 22.h,
-                      width: 45.w,
+                      height: 22.wh,
+                      width: 45.ww,
                       widgetIndex: 7,
                     ),
                   ),
@@ -81,38 +81,38 @@ class WebMainPageMeetWidgets extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: 0.5.w,
+            width: 0.5.ww,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 2.w),
+            padding: EdgeInsets.only(left: 2.ww),
             child: Column(
               children: [
                 WebMainPageMeetWidgets(
-                  height: 16.h,
-                  width: 45.w,
+                  height: 16.wh,
+                  width: 45.ww,
                   widgetIndex: 1,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 2.w),
+                  padding: EdgeInsets.only(top: 2.ww),
                   child: WebMainPageMeetWidgets(
-                    height: 16.h,
-                    width: 45.w,
+                    height: 16.wh,
+                    width: 45.ww,
                     widgetIndex: 2,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 2.w),
+                  padding: EdgeInsets.only(top: 2.ww),
                   child: WebMainPageMeetWidgets(
-                    height: 45.h,
-                    width: 45.w,
+                    height: 45.wh,
+                    width: 45.ww,
                     widgetIndex: 6,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 2.w),
+                  padding: EdgeInsets.only(top: 2.ww),
                   child: WebMainPageMeetWidgets(
-                    height: 22.h,
-                    width: 45.w,
+                    height: 22.wh,
+                    width: 45.ww,
                     widgetIndex: 8,
                   ),
                 ),
@@ -132,34 +132,34 @@ class WebMainPageMeetWidgets extends StatelessWidget {
               Column(
                 children: [
                   WebMainPageMeetWidgets(
-                    height: 31.6.h,
-                    width: 22.w,
+                    height: 31.6.wh,
+                    width: 22.ww,
                     widgetIndex: 1,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 2.w),
+                    padding: EdgeInsets.only(top: 2.ww),
                     child: WebMainPageMeetWidgets(
-                      height: 31.6.h,
-                      width: 22.w,
+                      height: 31.6.wh,
+                      width: 22.ww,
                       widgetIndex: 2,
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 2.w),
+                padding: EdgeInsets.only(left: 2.ww),
                 child: Column(
                   children: [
                     WebMainPageMeetWidgets(
-                      height: 44.h,
-                      width: 22.w,
+                      height: 44.wh,
+                      width: 22.ww,
                       widgetIndex: 3,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 2.w),
+                      padding: EdgeInsets.only(top: 2.ww),
                       child: WebMainPageMeetWidgets(
-                        height: 20.h,
-                        width: 22.w,
+                        height: 20.wh,
+                        width: 22.ww,
                         widgetIndex: 4,
                       ),
                     ),
@@ -169,41 +169,41 @@ class WebMainPageMeetWidgets extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: 2.w,
+            width: 2.ww,
           ),
           Row(
             children: [
               Column(
                 children: [
                   WebMainPageMeetWidgets(
-                    height: 20.h,
-                    width: 22.w,
+                    height: 20.wh,
+                    width: 22.ww,
                     widgetIndex: 5,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 2.w),
+                    padding: EdgeInsets.only(top: 2.ww),
                     child: WebMainPageMeetWidgets(
-                      height: 44.h,
-                      width: 22.w,
+                      height: 44.wh,
+                      width: 22.ww,
                       widgetIndex: 6,
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 2.w),
+                padding: EdgeInsets.only(left: 2.ww),
                 child: Column(
                   children: [
                     WebMainPageMeetWidgets(
-                      height: 44.h,
-                      width: 22.w,
+                      height: 44.wh,
+                      width: 22.ww,
                       widgetIndex: 7,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 2.w),
+                      padding: EdgeInsets.only(top: 2.ww),
                       child: WebMainPageMeetWidgets(
-                        height: 20.h,
-                        width: 22.w,
+                        height: 20.wh,
+                        width: 22.ww,
                         widgetIndex: 8,
                       ),
                     ),
@@ -230,29 +230,33 @@ class WebMainPageMeetWidgets extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/android.png',
-                width: 10.w,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 4.w),
-                child: Image.asset(
-                  'assets/images/ios_17.png',
-                  width: 8.w,
-                ),
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 1.ww),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: Image.asset(
+                  'assets/images/android.png',
+                )),
+                Expanded(
+                    child: Padding(
+                  padding: EdgeInsets.only(left: 4.ww),
+                  child: Image.asset(
+                    'assets/images/ios_17.png',
+                    width: 12.wh,
+                  ),
+                ))
+              ],
+            ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 2.h),
+            padding: EdgeInsets.only(top: 2.wh),
             child: Text(
               'Fully Compatible',
               style: TextStyles.body
                   .copyWith(color: UIColors.whiteColor)
-                  .copyWith(fontSize: 16.sp, color: UIColors.whiteColor),
+                  .copyWith(fontSize: 16.wsp, color: UIColors.whiteColor),
             ),
           ),
         ],
@@ -274,13 +278,13 @@ class WebMainPageMeetWidgets extends StatelessWidget {
           Text(
             '180+',
             style: TextStyles.boldText
-                .copyWith(fontSize: 23.sp, color: UIColors.whiteColor),
+                .copyWith(fontSize: 23.wsp, color: UIColors.whiteColor),
           ),
           Text(
             'Countries',
             style: TextStyles.body
                 .copyWith(color: UIColors.whiteColor)
-                .copyWith(fontSize: 18.sp, color: UIColors.whiteColor),
+                .copyWith(fontSize: 18.wsp, color: UIColors.whiteColor),
           ),
         ],
       ),
@@ -296,7 +300,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: EdgeInsets.all(6.w),
+        padding: EdgeInsets.all(3.ww),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -305,7 +309,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
               child: Text(
                 'Ultra\nSecurity',
                 style: TextStyles.boldText.copyWith(
-                  fontSize: 22.sp,
+                  fontSize: 22.wsp,
                   color: const Color(0xFF207fff),
                   height: 0.9,
                 ),
@@ -315,7 +319,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: SvgPicture.asset(
                 'assets/icons/security_icon.svg',
-                width: 15.w,
+                width: 15.wh,
                 colorFilter: const ColorFilter.mode(
                   UIColors.whiteColor,
                   BlendMode.srcIn,
@@ -342,13 +346,13 @@ class WebMainPageMeetWidgets extends StatelessWidget {
           Text(
             '1,000+',
             style: TextStyles.boldText
-                .copyWith(fontSize: 21.sp, color: UIColors.whiteColor),
+                .copyWith(fontSize: 21.wsp, color: UIColors.whiteColor),
           ),
           Text(
             'Daily File Sharing',
             style: TextStyles.body
                 .copyWith(color: UIColors.whiteColor)
-                .copyWith(fontSize: 18.sp, color: const Color(0xFFffa16e)),
+                .copyWith(fontSize: 18.wsp, color: const Color(0xFFffa16e)),
           ),
         ],
       ),
@@ -369,13 +373,13 @@ class WebMainPageMeetWidgets extends StatelessWidget {
           Text(
             '10,000+',
             style: TextStyles.boldText
-                .copyWith(fontSize: 19.sp, color: UIColors.whiteColor),
+                .copyWith(fontSize: 19.wsp, color: UIColors.whiteColor),
           ),
           Text(
             'Daily Usage',
             style: TextStyles.body
                 .copyWith(color: UIColors.whiteColor)
-                .copyWith(fontSize: 16.sp, color: const Color(0xFF6793e9)),
+                .copyWith(fontSize: 16.wsp, color: const Color(0xFF6793e9)),
           ),
         ],
       ),
@@ -391,7 +395,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: EdgeInsets.all(3.w),
+        padding: EdgeInsets.all(3.ww),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -402,17 +406,17 @@ class WebMainPageMeetWidgets extends StatelessWidget {
                 Text(
                   '360+',
                   style: TextStyles.boldText
-                      .copyWith(fontSize: 23.sp, color: UIColors.whiteColor),
+                      .copyWith(fontSize: 23.wsp, color: UIColors.whiteColor),
                 ),
                 SizedBox(
-                  width: 60.w,
+                  width: 60.ww,
                   child: Text(
                     'Media Recommended',
                     style: TextStyles.body
                         .copyWith(color: UIColors.whiteColor)
                         .copyWith(
                           height: 1,
-                          fontSize: 18.sp,
+                          fontSize: 16.wsp,
                           color: const Color(0xFF6793e9),
                         ),
                   ),
@@ -429,7 +433,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
                     style: TextStyles.body
                         .copyWith(color: UIColors.whiteColor)
                         .copyWith(
-                          fontSize: 19.sp,
+                          fontSize: 19.wsp,
                           color: Colors.grey,
                           height: 1,
                         ),
@@ -437,7 +441,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
                   Text(
                     'File Sharing',
                     style: TextStyles.boldText.copyWith(
-                      fontSize: 19.sp,
+                      fontSize: 19.wsp,
                       color: Colors.grey,
                       height: 1,
                     ),
@@ -460,7 +464,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 3.h),
+        padding: EdgeInsets.symmetric(vertical: 3.wh),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -472,7 +476,7 @@ class WebMainPageMeetWidgets extends StatelessWidget {
                   '4.8',
                   style: TextStyles.boldText.copyWith(
                     height: 0.75,
-                    fontSize: 37.sp,
+                    fontSize: 37.wsp,
                     color: const Color(0xFFfcdf60),
                   ),
                 ),
@@ -482,38 +486,39 @@ class WebMainPageMeetWidgets extends StatelessWidget {
                       .copyWith(color: UIColors.whiteColor)
                       .copyWith(
                         height: 1,
-                        fontSize: 20.sp,
+                        fontSize: 20.wsp,
                         color: UIColors.whiteColor,
                       ),
                 ),
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 3.w),
+              padding: EdgeInsets.only(top: 3.ww),
               child: Text(
                 '100+ REVIEWS',
                 style: TextStyles.body
                     .copyWith(color: UIColors.whiteColor)
-                    .copyWith(fontSize: 16.sp, color: UIColors.whiteColor),
+                    .copyWith(fontSize: 16.wsp, color: UIColors.whiteColor),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 0.8.w),
+              padding: EdgeInsets.only(top: 0.8.ww),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   for (int i = 0; i < 5; i++)
-                    Padding(
+                    Expanded(
+                        child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 0.6),
                       child: SvgPicture.asset(
                         'assets/icons/star_icon.svg',
-                        width: 5.w,
+                        width: 5.ww,
                         colorFilter: const ColorFilter.mode(
                           Color(0xFFffcf31),
                           BlendMode.srcIn,
                         ),
                       ),
-                    ),
+                    )),
                 ],
               ),
             ),
@@ -537,13 +542,13 @@ class WebMainPageMeetWidgets extends StatelessWidget {
           Text(
             'Download',
             style: TextStyles.boldText
-                .copyWith(fontSize: 19.sp, color: UIColors.whiteColor),
+                .copyWith(fontSize: 19.wsp, color: UIColors.whiteColor),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 1.w),
+            padding: EdgeInsets.only(left: 1.ww),
             child: SvgPicture.asset(
               'assets/icons/download_icon.svg',
-              width: 5.w,
+              width: 5.ww,
               colorFilter: const ColorFilter.mode(
                 UIColors.whiteColor,
                 BlendMode.srcIn,

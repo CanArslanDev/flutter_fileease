@@ -12,11 +12,12 @@ import 'package:flutter_fileease/core/user/models/latest_connections_model.dart'
 import 'package:flutter_fileease/core/user/models/share_friends_model.dart';
 import 'package:flutter_fileease/core/user/models/user_model.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
-import 'package:flutter_fileease/pages/home_page/home_page_drawer.dart';
-import 'package:flutter_fileease/pages/latest_connections.dart';
-import 'package:flutter_fileease/pages/manage_storage_page.dart';
-import 'package:flutter_fileease/pages/qr_pages/share_qr_page.dart';
-import 'package:flutter_fileease/pages/receive_requests_page.dart';
+import 'package:flutter_fileease/pages/portrait/home_page/home_page_drawer.dart';
+import 'package:flutter_fileease/pages/portrait/latest_connections.dart';
+import 'package:flutter_fileease/pages/portrait/manage_storage_page.dart';
+
+import 'package:flutter_fileease/pages/portrait/qr_pages/share_qr_page.dart';
+import 'package:flutter_fileease/pages/portrait/receive_requests_page.dart';
 import 'package:flutter_fileease/services/convert_value_service.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/services/responsive_sizer_service.dart';

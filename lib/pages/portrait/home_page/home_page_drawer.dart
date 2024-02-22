@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fileease/core/user/models/user_model.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
-import 'package:flutter_fileease/pages/latest_connections.dart';
+import 'package:flutter_fileease/pages/portrait/latest_connections.dart';
 import 'package:flutter_fileease/services/navigation_service.dart';
 import 'package:flutter_fileease/themes/colors.dart';
 import 'package:flutter_fileease/ui/text_styles.dart';
