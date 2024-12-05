@@ -9,6 +9,7 @@ import 'package:flutter_fileease/core/bloc/firebase_core/firebase_core_bloc.dart
 import 'package:flutter_fileease/core/bloc/send_file/send_file_bloc.dart';
 import 'package:flutter_fileease/core/firebase_core.dart';
 import 'package:flutter_fileease/core/user/user_bloc.dart';
+import 'package:flutter_fileease/firebase_options.dart';
 import 'package:flutter_fileease/pages/portrait/connection_page.dart';
 import 'package:flutter_fileease/pages/portrait/home_page/home_page.dart';
 import 'package:flutter_fileease/pages/portrait/qr_pages/qr_scanner_page.dart';
@@ -45,7 +46,7 @@ void main() async {
                 messagingSenderId: '239466517804',
                 appId: '1:239466517804:web:a58d6d36cbca8e8fd04889',
               )
-            : null,
+            : DefaultFirebaseOptions.currentPlatform,
       );
     } else {
       Firebase.app();
@@ -82,7 +83,7 @@ class MyApp extends StatelessWidget {
                 routes: {
                   '/': (context) => initalizeHome,
                   '/connection-page': (context) => const ConnectionPage(),
-                  '/qr-scanner-page': (context) => const QRScannerPage(),
+                  // '/qr-scanner-page': (context) => const QRScannerPage(),
                 },
               );
             },
