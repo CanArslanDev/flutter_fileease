@@ -116,3 +116,46 @@ flutter run
 ```
 
 Your app should now be set up and connected to Firebase!
+
+## Tasks
+ - Try changing the `void` return types to `factory` when you remove the `prefer_constructors_over_static_methods` linter and encounter errors.
+ - Look into the Logger package, if usable in the app, loan code related to `debugPrint` will be replaced with the Logger package.
+ - User cannot exit the connection while transferring files.
+ - Check if the user has enough storage space on both the phone and the database before adding files (during the transfer).
+ - Check if the lastConnections of the user are cleared after file transfer (it should not change).
+ - When the QR code page is opened, a connection request snackbar should not appear from the top (from inappnotifications).
+ - Connection requests cannot be accepted after 5 minutes, and cannot be accepted if the user has closed the app.
+   This will be handled using timestamps, and by using timestamps, when multiple requests from the same person come, the deletion of requests will be done according to the timestamp, preventing multiple requests from being deleted simultaneously.
+ - When there is a large accumulation of data, such as last connections requests, the data transfer may take a long time. If the user is connected at that moment, it can affect the connection speed. A system that pauses the code while the user is connected can be implemented to prevent this.
+ - A `constants.dart` file will be created, and folders such as `cloud storage files` or `profilePhotos` will be added.
+ - The minimum SDK version will be set to 20 (in `build.gradle`).
+ - The following entries will be added to `info.plist` [here](https://pub.dev/packages/qr_code_scanner).
+ - The app will only open in portrait mode.
+ - In theme mode, the `SchedulerBinding.instance.platformDispatcher.platformBrightness` will only be refreshed when the app is opened, meaning if the user minimizes the app and changes the phone theme, the theme is not updated. This will be fixed.
+
+## Connection conditions (the remaining ones can be optional for future implementation)
+ - ~~If either party exits the connection~~
+ - If either party’s app is closed (this can be considered)
+ - ~~If either party cancels~~
+ - If any error occurs
+ - If a file transfer request comes from a different user while sending a file, the user will either not be able to accept it, or a message will ask if they want to accept, and if they say yes, the file transfer will be canceled, and the new connection will be made.
+ - If two requests come during a file transfer, one will be accepted, and the file transfer will start. If the other request is accepted after the first, the new connection will not be made. This applies to both the sender and the receiver.
+
+## Future Tasks
+ - The `toMap` and `fromMap` functions for the user model will be moved to the user model.
+ - The Firebase functionality in the user bloc will be moved to a separate file.
+ - A model will be created for `connectionRequest`, `connectedUser`, and `previousConnectionRequest` in the user model, and they will be renamed to `connectionRequests` and `previousConnectionRequests`. After the model is created, the `acceptRequest` and `acceptRequestQR` functions in the user bloc will be modified to use this model.
+ - We will add an update notification system.
+ - Google Analytics will be added.
+ - A bloc will be created for the QR scanner page.
+ - It seems that when data comes in the user list, the entire model is set from the beginning; this will be changed to only set the data that changed. After that, it will be checked if the `animatedText` created for the id can be implemented as a stateless widget on the homepage.
+ - The connection request lists will be stored on the phone and cached to avoid reloading.
+ - The list of user connections in the user bloc is constantly updated with emits. These values are only displayed on the receive page, so they will be updated with emits only when the receive page is opened. If possible, it will be done using `ckey` in the navigation service to make it more efficient.
+ - Shimmer effects can be added for connection requests, as the loading data is coming from the model.
+ - When a user exits the connection, an alert dialog can be shown to notify the other user that the connection has been exited.
+ - Comparisons like:
+   ```dart
+   (item) =>
+       item.path == file.path &&
+       item.name == file.name &&
+       item.fileCreatedTimestamp == file.fileCreatedTimestamp
