@@ -47,28 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD3Zr7yMGM4FUwZp_5KtbC35w-712DLPZg',
-    appId: '1:239466517804:web:a58d6d36cbca8e8fd04889',
-    messagingSenderId: '239466517804',
-    projectId: 'flutter-fileease',
-    authDomain: 'flutter-fileease.firebaseapp.com',
-    storageBucket: 'flutter-fileease.appspot.com',
+    apiKey: 'xxx',
+    authDomain: 'xxx',
+    projectId: 'xxx',
+    storageBucket: 'xxx',
+    messagingSenderId: 'xxx',
+    appId: 'xxx',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBOgm1DH3ecxqs7NX2NXNaWwf-tPdY75BY',
-    appId: '1:239466517804:android:9fd5402c387fea47d04889',
-    messagingSenderId: '239466517804',
-    projectId: 'flutter-fileease',
-    storageBucket: 'flutter-fileease.appspot.com',
+    apiKey: 'xxx',
+    authDomain: 'xxx',
+    projectId: 'xxx',
+    storageBucket: 'xxx',
+    messagingSenderId: 'xxx',
+    appId: 'xxx',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAeTKO_rF_s9g1Cah0-YkBqmrH3wHcEs3w',
-    appId: '1:239466517804:ios:a541c3f4e816883ed04889',
-    messagingSenderId: '239466517804',
-    projectId: 'flutter-fileease',
-    storageBucket: 'flutter-fileease.appspot.com',
-    iosBundleId: 'com.fileease',
+    apiKey: 'xxx',
+    authDomain: 'xxx',
+    projectId: 'xxx',
+    storageBucket: 'xxx',
+    messagingSenderId: 'xxx',
+    appId: 'xxx',
   );
 }
