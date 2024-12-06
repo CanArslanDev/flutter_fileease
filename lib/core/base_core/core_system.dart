@@ -33,10 +33,11 @@ class FirebaseCoreSystem {
   }
 
   Future<Timestamp> getUserExpirationFromIDCollection(String id) async {
-    final collectionuser = FirebaseFirestore.instance.collection('ids').doc(id);
-    final docSnapshotuser = await collectionuser.get();
-    final doc = docSnapshotuser.data();
     try {
+      final collectionuser =
+          FirebaseFirestore.instance.collection('ids').doc(id);
+      final docSnapshotuser = await collectionuser.get();
+      final doc = docSnapshotuser.data();
       if (doc!['expiration'] != null) {
         return doc['expiration'] as Timestamp;
       } else {

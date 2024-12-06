@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 class WebFirebaseCore {
   Future<DateTime> getServerTimestamp() async {
     final res = await http
-        .get(Uri.parse('https://worldtimeapi.org/api/timezone/Etc/UTC'));
+        .get(Uri.parse('http://timeapi.io/api/Time/current/zone?timeZone=UTC'));
     final json = jsonDecode(res.body) as Map;
-    final nowHttp = DateTime.parse(json['datetime'] as String);
+    final nowHttp = DateTime.parse(json['dateTime'] as String);
     return nowHttp;
   }
 

@@ -746,12 +746,22 @@ class HomePage extends StatelessWidget {
       int.parse(userState.availableCloudStorageKB.round().toString()),
       0,
     );
+    final usedStorage = ConvertValueService().getFileSizeFromKB(
+      int.parse(
+        (userState.availableCloudStorageKB - coreState.defaultCloudStorageKB)
+            .round()
+            .toString(),
+      ),
+      0,
+    );
     final defaultStorage = ConvertValueService().getFileSizeFromKB(
       int.parse(coreState.defaultCloudStorageKB.round().toString()),
       0,
     );
-    final storagePercentage = (userState.availableCloudStorageKB * 100) /
-        coreState.defaultCloudStorageKB;
+    final storagePercentage =
+        ((userState.availableCloudStorageKB - coreState.defaultCloudStorageKB) *
+                100) /
+            coreState.defaultCloudStorageKB;
     return GestureDetector(
       onTap: () =>
           Navigator.of(NavigationService.navigatorKey.currentContext!).push(
@@ -774,11 +784,11 @@ class HomePage extends StatelessWidget {
                 radius: 43,
                 lineWidth: 11.3,
                 animation: true,
-                percent: storagePercentage / 100,
-                backgroundColor: Colors.transparent,
+                percent: (storagePercentage <= 0 ? 0 : storagePercentage) / 100,
+                backgroundColor: Colors.grey.withOpacity(0.1),
                 curve: Curves.fastLinearToSlowEaseIn,
                 center: Text(
-                  '''${(storagePercentage.toString() == 'NaN') ? 0 : storagePercentage.toStringAsFixed(0)}%''',
+                  '''${(storagePercentage.toString() == 'NaN' || storagePercentage < 0) ? 0 : storagePercentage.toStringAsFixed(0)}%''',
                   style: TextStyles.boldText,
                 ),
                 circularStrokeCap: CircularStrokeCap.round,
@@ -800,7 +810,7 @@ class HomePage extends StatelessWidget {
                         (userState.availableCloudStorageKB == 0 ||
                                 coreState.defaultCloudStorageKB == 0)
                             ? 'Loading...'
-                            : '$availableStorage of $defaultStorage used',
+                            : '$usedStorage of $defaultStorage used',
                         style: TextStyles.greyText,
                       ),
                     ),
